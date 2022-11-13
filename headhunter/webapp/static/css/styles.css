@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Century Schoolbook", Verdana, Arial, sans-serif;
+}
+
+.aqua {
+    background: rgb(0, 171, 168);
+    background: linear-gradient(90deg, rgba(0, 171, 168, 1) 40%, rgba(0, 223, 220, 1) 100%);
+    color: #f8f9fa;
+}
+
+.reddish {
+    background: rgb(149, 0, 0);
+    background: linear-gradient(90deg, rgba(149, 0, 0, 1) 0%, rgba(207, 0, 119, 1) 50%, rgba(255, 168, 168, 1) 100%);
+    color: #f8f9fa;
+}
+
+
+.txt-color {
+    color: #f8f9fa;
+}
+
+.error label {
+    color: #8f0000;
+}
+
+.errorlist {
+    color: #8f0000;
+}
