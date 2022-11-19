@@ -32,3 +32,33 @@ body {
 .errorlist {
     color: #8f0000;
 }
+
+.container {
+    height: 80px;
+}
+
+img {
+    padding-top: 10px;
+}
+
+.nav-item {
+    padding-top: 9px;
+}
+
+.search {
+    text-decoration-style: dashed;
+}
+
+.bi {
+    padding-right: 5px;
+}
+
+.create {
+    padding-top: 11px;
+}
+
+.create-button {
+    border-color: green;
+    color: green;
+}
+
