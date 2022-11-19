@@ -18,7 +18,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <title>{% block title %} ControlWork #8 {% endblock %}</title>
+    <title>{% block title %} HeadHunter {% endblock %}</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
@@ -28,22 +28,29 @@
 
 <body>
 
-<div class="fixed-top" style="background-color: rgb(0,124,122);">
+<div class="fixed-top" style="background-color: rgba(34,35,36,255);">
     <div class="container container-fluid d-flex">
         <a class="navbar-brand ml-3" href="{% url 'index' %}"
-           style="font-size: 36px; font-style: italic; color: aqua;">ControlWork #8</a>
+           style="font-size: 36px; font-style: italic;"><img src="https://i.hh.kz/logos/svg/hh.kz-inversed__min_.svg?v=11032019" alt="logo"></a>
         <div style="font-size: 21px; ">
             <ul class="d-flex list-unstyled">
                 {% block menu %}{% endblock %}
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-warning text-light pt-3" href="#">Личный
-                            кабинет</a>
+                        <a class="nav-link text-warning text-light pt-3" href="#">Мои резюме</a>
                     </li>
-                    <li class="nav-item mt-2">
-                        <div class="d-flex align-middle" style="margin-left: 150px;">
-                            <div class="pt-2 pl-2">
-                                <span class="text-light">Здравствуйте, {{ user.username }}</span>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning text-light pt-3" href="#">Отклики</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="d-flex align-middle" style="margin-left: 240px;">
+                            <div>
+                                <a class="nav-link text-warning text-light pt-3" href="#"><i class="bi bi-search"></i>Поиск</a>
+                            </div>
+                            <div>
+                                <a class="nav-link text-warning text-light create" href="#">
+                                    <button type="button" class="btn btn-outline-success rounded-pill" style="font-size: 19px">Создать резюме</button>
+                                </a>
                             </div>
                             <div>
                                 <form action="{% url 'logout' %}" method="POST" class="ml-3">
@@ -51,11 +58,14 @@
                                     <input type="submit" value="Выйти" class="btn btn-secondary mt-2">
                                 </form>
                             </div>
+                            <div>
+                                <a class="nav-link text-warning text-light" href="#" style="font-size: 2rem;"><i class="bi bi-person-circle"></i></a>
+                            </div>
                         </div>
                     </li>
                 {% else %}
                     {% if 'auth' in request.get_full_path %}
-                        <li class="nav-item mt-2 text-right" style="width: 230px;">
+                        <li class="nav-item mt-2 text-right" style="width: 230px; margin-left: 500px;">
                             <a href="{% url 'login' %}"
                                class="btn btn-light mt-2 text-right">Войти</a>
                         </li>
@@ -63,7 +73,7 @@
                             <a href="{% url 'register' %}" class="btn btn-light mt-2 ml-2">Зарегистрироваться</a>
                         </li>
                     {% else %}
-                        <li class="nav-item mt-2 text-right" style="width: 230px;">
+                        <li class="nav-item mt-2 text-right" style="width: 230px; margin-left: 500px;">
                             <a href="{% url 'login' %}?next={{ request.get_full_path }}"
                                class="btn btn-light mt-2 text-right">Войти</a>
                         </li>
@@ -78,9 +88,7 @@
     </div>
 
 </div>
-<div class="pt-3"
-     style="height: auto; background: rgb(0,124,122); background: linear-gradient(90deg, rgba(0,124,122,1) 0%,
-     rgba(187,255,241,1) 69%);">
+<div class="pt-3">
     <div class="container p-0 pb-3" style="min-height: 650px; margin-top: 85px;">
         <div style="padding-top: 60px;">
             {% block content %}{% endblock %}
@@ -89,10 +97,10 @@
     </div>
 </div>
 
-<footer style="background-color: rgb(0,124,122); height: 55px;" class="text-light text-center">
+<footer style="background-color: rgba(34,35,36,255); height: 180px;" class="text-light text-center">
     <div class="container">
         <p class="pt-3">
-            &copy; 2022 Rashid Gulamov
+            &copy; 2022 Rashid Gulamov, Adlet Kurentaev
         </p>
     </div>
 </footer>
