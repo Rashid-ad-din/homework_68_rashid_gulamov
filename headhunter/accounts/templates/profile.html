@@ -5,7 +5,7 @@
 
 {% block menu %}
     {% if user == user_obj %}
-        <li><a href="{% url 'change' user_obj.pk %}">Редактировать</a></li>
+        <li><a href="">Редактировать</a></li>
         <li><a href="#">Смена пароля</a></li>
     {% endif %}
 {% endblock %}
@@ -33,7 +33,7 @@
                     <p>
                     <h1>{{ user_obj.get_full_name|default:user_obj.username }}</h1></p>
                     {% if user == user_obj %}
-                        <p><a href="{% url 'change' user.pk %}"
+                        <p><a href=""
                               class="btn btn-light mt-2 ms-3">
                             Редактировать профиль</a></p>
                     {% else %}
@@ -53,17 +53,17 @@
                     {% endif %}
                 </div>
 
-                <div class="d-flex">
-                    {% if user == user_obj %}
-                        <p class="me-5">Публикации: {{ user.posts.all.count }}</p>
-                        <p class="me-5">Подписки: {{ own_subscribes }}</p>
-                        <p class="me-5">Подписчики: {{ own_subscribers }}</p>
-                    {% else %}
-                        <p class="me-5">Публикации: {{ user_obj.posts.all.count }}</p>
-                        <p class="me-5">Подписки: {{ some_subscribes }}</p>
-                        <p class="me-5">Подписчики: {{ some_subscribers }}</p>
-                    {% endif %}
-                </div>
+                {#                <div class="d-flex">#}
+                {#                    {% if user == user_obj %}#}
+                {#                        <p class="me-5">Публикации: {{ user.posts.all.count }}</p>#}
+                {#                        <p class="me-5">Подписки: {{ own_subscribes }}</p>#}
+                {#                        <p class="me-5">Подписчики: {{ own_subscribers }}</p>#}
+                {#                    {% else %}#}
+                {#                        <p class="me-5">Публикации: {{ user_obj.posts.all.count }}</p>#}
+                {#                        <p class="me-5">Подписки: {{ some_subscribes }}</p>#}
+                {#                        <p class="me-5">Подписчики: {{ some_subscribers }}</p>#}
+                {#                    {% endif %}#}
+                {#                </div>#}
 
                 <div>
                     <p class="p-0 m-0 fw-bold">{{ user_obj.username }}</p>
@@ -71,12 +71,26 @@
                 </div>
 
             </div>
+
+        {% if user_obj.resumes.objects.all %}
+            {% for resume in user.resumes.objects.all %}
+
+                <div class="m-3">
+                    <a href="">
+                        <img src="{{ resume.name }}" width="293"
+                             height="293" alt="user picture">
+                    </a>
+                </div>
+
+            {% empty %}
+            {% endfor %}
+        {% endif %}
         </div>
 
 
-        <div style="margin-left: -270px; margin-top: 50px;" class="border-top">
-            {% include 'posts.html' %}
-        </div>
+        {#        <div style="margin-left: -270px; margin-top: 50px;" class="border-top">#}
+        {#            {% include 'posts.html' %}#}
+        {#        </div>#}
 
     </div>
 {% endblock %}

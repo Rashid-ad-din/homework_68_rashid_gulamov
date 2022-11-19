@@ -61,10 +61,10 @@ class RegisterView(CreateView):
         return self.render_to_response(context)
 #
 #
-# class ProfileView(LoginRequiredMixin, DetailView):
-#     model = get_user_model()
-#     template_name = 'profile.html'
-#     context_object_name = 'user_obj'
+class ProfileView(LoginRequiredMixin, DetailView):
+    model = get_user_model()
+    template_name = 'profile.html'
+    context_object_name = 'user_obj'
 #
 #     def get_context_data(self, **kwargs):
 #         posts = self.object.posts.order_by('-created_at')
