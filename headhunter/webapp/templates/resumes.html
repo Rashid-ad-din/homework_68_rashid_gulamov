@@ -6,11 +6,9 @@
         {% for resume in resumes %}
 
             <div class="m-3">
-                <a href="{% url 'profile_post' post.author.pk post.pk %}">
-                    <img src="{{ resume.name }}" width="293"
-                         height="293" alt="user picture">
-                </a>
-            </div>
+                    <p>{{ resume.name }}</p>
+                    <p>{{ resume.phone_number }}</p>
+                </div>
 
         {% empty %}
         {% endfor %}

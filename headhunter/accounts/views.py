@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
 
-from accounts.forms import LoginForm, CustomUserCreationForm
+from accounts.forms import LoginForm, CustomUserCreationForm, UserChangeForm, PasswordChangeForm
 from accounts.models import Account
 
 
@@ -59,12 +59,16 @@ class RegisterView(CreateView):
         context = {}
         context['form'] = form
         return self.render_to_response(context)
+
+
 #
 #
 class ProfileView(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = 'profile.html'
     context_object_name = 'user_obj'
+
+
 #
 #     def get_context_data(self, **kwargs):
 #         posts = self.object.posts.order_by('-created_at')
@@ -88,14 +92,16 @@ class ProfileView(LoginRequiredMixin, DetailView):
 #         return super().get(request, *args, **kwargs)
 #
 #
-# class UserChangeView(UpdateView):
-#     model = get_user_model()
-#     form_class = UserChangeForm
-#     template_name = 'user_change.html'
-#     context_object_name = 'user_obj'
-#
-#     def get_success_url(self):
-#         return reverse('profile', kwargs={'pk': self.object.pk})
+class UserChangeView(UpdateView):
+    model = get_user_model()
+    form_class = UserChangeForm
+    template_name = 'user_change.html'
+    context_object_name = 'user_obj'
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.object.pk})
+
+
 #
 #
 # class ProfilesView(ListView):
@@ -132,3 +138,26 @@ class ProfileView(LoginRequiredMixin, DetailView):
 #         if self.search_value:
 #             context['query'] = urlencode({'search': self.search_value})
 #         return context
+
+
+class PasswordChangeView(UpdateView):
+    model = get_user_model()
+    template_name = 'password_change.html'
+    form_class = PasswordChangeForm
+    context_object_name = 'user_obj'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            user = request.user
+            password = form.cleaned_data.get('password')
+            user.set_password(password)
+            user.save()
+            login(request, user)
+            return redirect('profile', pk=user.pk)
+        context = {}
+        context['form'] = form
+        return self.render_to_response(context)
+
+    def get_success_url(self):
+        return reverse('profile', kwargs={'pk': self.request.user.pk})

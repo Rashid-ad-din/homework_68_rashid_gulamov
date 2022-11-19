@@ -46,11 +46,29 @@ class CustomUserCreationForm(forms.ModelForm):
         return user
 
 
-# class UserChangeForm(forms.ModelForm):
-#     class Meta:
-#         model = get_user_model()
-#         fields = ('first_name', 'login', 'email', 'avatar')
-#         labels = {'first_name': 'Имя', 'login': 'Логин', 'email': 'Email'}
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'email', 'phone', 'avatar')
+        labels = {'username': 'Логин', 'first_name': 'Имя', 'email': 'Email'}
+
+
+class PasswordChangeForm(forms.ModelForm):
+    password = forms.CharField(label='Пароль', strip=False, required=True, widget=forms.PasswordInput)
+    password_confirm = forms.CharField(label='Подтвердите пароль', strip=False, required=True,
+                                       widget=forms.PasswordInput)
+
+    class Meta:
+        model = get_user_model()
+        fields = (
+            'password', 'password_confirm')
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        password_confirm = cleaned_data.get('password_confirm')
+        if password and password_confirm and password != password_confirm:
+            raise ValidationError('Пароли не совпадают')
 #
 #
 # class SearchForm(forms.Form):
