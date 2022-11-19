@@ -1,5 +1,5 @@
 from django.db.models import Manager
-from posts.querysets import CustomBaseQuerySet
+from webapp.querysets import CustomBaseQuerySet
 
 
 class HHProjectManager(Manager):
