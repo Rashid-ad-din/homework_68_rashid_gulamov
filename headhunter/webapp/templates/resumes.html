@@ -1,0 +1,18 @@
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+    <div class="d-flex flex-row flex-wrap" style="padding-left: 145px;">
+        {% for resume in resumes %}
+
+            <div class="m-3">
+                    <p>{{ resume.name }}</p>
+                    <p>{{ resume.phone_number }}</p>
+                </div>
+
+        {% empty %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

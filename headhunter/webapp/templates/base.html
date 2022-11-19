@@ -28,38 +28,50 @@
 
 <body>
 
-<div class="fixed-top" style="background-color: rgba(34,35,36,255);">
+<div class="fixed-top pb-3" style="background-color: rgba(34,35,36,255);">
     <div class="container container-fluid d-flex">
         <a class="navbar-brand ml-3" href="{% url 'index' %}"
-           style="font-size: 36px; font-style: italic;"><img src="https://i.hh.kz/logos/svg/hh.kz-inversed__min_.svg?v=11032019" alt="logo"></a>
+           style="font-size: 36px; font-style: italic;"><img
+                src="https://i.hh.kz/logos/svg/hh.kz-inversed__min_.svg?v=11032019" alt="logo"></a>
         <div style="font-size: 21px; ">
             <ul class="d-flex list-unstyled">
+                <li class="nav-item">
+                    <a class="nav-link text-warning text-light pt-3" href="#"><i class="bi bi-search"></i>Поиск</a>
+                </li>
                 {% block menu %}{% endblock %}
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link text-warning text-light pt-3" href="#">Мои резюме</a>
-                    </li>
+                    {% if user.usertype == 'candidate' %}
+                        <li class="nav-item">
+                            <a class="nav-link text-warning text-light pt-3" href="#">Мои резюме</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning text-light create" href="#">
+                                <button type="button" class="btn btn-outline-success rounded-pill"
+                                        style="font-size: 19px">Создать резюме
+                                </button>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-warning text-light pt-3" href="#">Вакансии {{ user.username }}</a>
+                        </li>
+                    {% endif %}
+
                     <li class="nav-item">
                         <a class="nav-link text-warning text-light pt-3" href="#">Отклики</a>
                     </li>
                     <li class="nav-item">
-                        <div class="d-flex align-middle" style="margin-left: 240px;">
+                        <div class="d-flex align-middle flex-wrap" style="margin-left: 40px;">
                             <div>
-                                <a class="nav-link text-warning text-light pt-3" href="#"><i class="bi bi-search"></i>Поиск</a>
-                            </div>
-                            <div>
-                                <a class="nav-link text-warning text-light create" href="#">
-                                    <button type="button" class="btn btn-outline-success rounded-pill" style="font-size: 19px">Создать резюме</button>
-                                </a>
+                                <a class="nav-link text-warning text-light" href="{% url 'profile' user.pk %}"
+                                   style="font-size: 2rem;"><i
+                                        class="bi bi-person-circle"></i></a>
                             </div>
                             <div>
                                 <form action="{% url 'logout' %}" method="POST" class="ml-3">
                                     {% csrf_token %}
                                     <input type="submit" value="Выйти" class="btn btn-secondary mt-2">
                                 </form>
-                            </div>
-                            <div>
-                                <a class="nav-link text-warning text-light" href="#" style="font-size: 2rem;"><i class="bi bi-person-circle"></i></a>
                             </div>
                         </div>
                     </li>
