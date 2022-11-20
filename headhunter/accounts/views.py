@@ -155,6 +155,7 @@ class PasswordChangeView(UpdateView):
             user.save()
             login(request, user)
             return redirect('profile', pk=user.pk)
+        # return redirect('profile', pk=self.request.user.pk)
         context = {}
         context['form'] = form
         return self.render_to_response(context)
