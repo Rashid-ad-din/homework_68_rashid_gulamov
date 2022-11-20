@@ -42,10 +42,10 @@
                 {% if user.is_authenticated %}
                     {% if user.usertype == 'candidate' %}
                         <li class="nav-item">
-                            <a class="nav-link text-warning text-light pt-3" href="#">Мои резюме</a>
+                            <a class="nav-link text-warning text-light pt-3" href="{% url 'resumes' user.pk %}">Мои резюме</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-warning text-light create" href="#">
+                            <a class="nav-link text-warning text-light create" href="{% url 'create_resume' user.pk %}">
                                 <button type="button" class="btn btn-outline-success rounded-pill"
                                         style="font-size: 19px">Создать резюме
                                 </button>
@@ -101,7 +101,7 @@
 
 </div>
 <div class="pt-3">
-    <div class="container p-0 pb-3" style="min-height: 650px; margin-top: 85px;">
+    <div class="container p-0 pb-3" style="height: auto; margin-top: 85px;">
         <div style="padding-top: 60px;">
             {% block content %}{% endblock %}
             {% block bottom_href %}{% endblock %}
@@ -109,7 +109,7 @@
     </div>
 </div>
 
-<footer style="background-color: rgba(34,35,36,255); height: 180px;" class="text-light text-center">
+<footer style="background-color: rgba(34,35,36,255); height: 80px;" class="text-light text-center">
     <div class="container">
         <p class="pt-3">
             &copy; 2022 Rashid Gulamov, Adlet Kurentaev

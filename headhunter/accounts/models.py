@@ -9,17 +9,17 @@ class GenderChoices(TextChoices):
 
 
 class Account(AbstractUser):
-    usertype = models.CharField(choices=GenderChoices.choices, verbose_name='Пользователь', null=False,
+    usertype = models.CharField(choices=GenderChoices.choices, verbose_name='Пользователь *', null=False,
                                 blank=False, max_length=250)
-    username = models.CharField(verbose_name='Имя', unique=True, null=False, blank=False, max_length=150)
-    email = models.EmailField(verbose_name='Электронная почта', unique=True, null=False, blank=False)
+    username = models.CharField(verbose_name='Логин *', unique=True, null=False, blank=False, max_length=150)
+    email = models.EmailField(verbose_name='Email *', unique=True, null=False, blank=False)
     avatar = models.ImageField(
         null=True,
         blank=True,
         upload_to='avatars',
         verbose_name='Аватар'
     )
-    phone = models.CharField(verbose_name='Телефона', null=False, blank=False, max_length=100)
+    phone = models.CharField(verbose_name='Телефон *', null=False, blank=False, max_length=100)
 
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'

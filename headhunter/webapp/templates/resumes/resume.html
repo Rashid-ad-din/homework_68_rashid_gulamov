@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Curiculum vitae</h2>
+    <div>
+        <a href="{% url 'edit_resume' user.pk resume.pk %}" class="btn btn-secondary">Редактировать основной блок
+            резюме</a><br>
+        <span class="fw-bold">Автор: </span><span>{{ resume.name }} {{ resume.last_name }}<br></span>
+        <span class="fw-bold">Категория: </span><span>{{ resume.get_category_display }}<br></span>
+        <span class="fw-bold">Уроень дохода: </span><span>{{ resume.salary }} тг.<br></span>
+        <span class="fw-bold">Телефон: </span><span>{{ resume.phone_number }}<br></span>
+        <span class="fw-bold">Email: </span><span>{{ resume.email }}<br></span>
+        <span class="fw-bold">Telegram: </span><span>{{ resume.telegram }}<br></span>
+        {% if resume.facebook %}
+            <span class="fw-bold">Facebook: </span><span>{{ resume.facebook }}<br></span>
+        {% endif %}
+        {% if resume.linkedin %}
+            <span class="fw-bold">Linkedin: </span><span>{{ resume.linkedin }}<br></span>
+        {% endif %}
+
+        {% if resume.experience.all %}
+            <p class="fw-bold mb-0">Опыт работы:</p>
+            {% for experience in resume.experience.all %}
+                <div class="ps-3 pt-2 border-bottom border-top">
+                    <span class="fw-bold">Организация:</span><span>{{ experience.name_of_company }}<br></span>
+                    <span class="fw-bold">Стаж: </span><span>{{ experience.experience }} лет,мес.<br></span>
+                    {% if experience.start_date %}
+                        <span class="fw-bold">Дата начала работы: </span><span>{{ experience.start_date }}<br></span>
+                    {% endif %}
+                    {% if experience.start_date %}
+                        <span class="fw-bold">Дата увольнения: </span><span>{{ experience.end_date }}<br></span>
+                    {% endif %}
+                    <span class="fw-bold">Позиция: </span><span>{{ experience.position }}<br></span>
+                    <span class="fw-bold">Обязанности: </span><span>{{ experience.responsibilities }}<br></span>
+                    {% if experience.start_date %}
+                        <span class="fw-bold">Доп. информация: <br></span>
+                        <span>{{ experience.additional_info }}<br></span>
+                    {% endif %}
+                    <a href="#" class="btn btn-secondary mb-2">Редактировать блок опыта работы</a><br>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <a href="#" class="btn btn-secondary mt-2">Добавить блок опыта работы</a>
+
+        {% if resume.education.all %}
+            <p class="fw-bold mb-0 pt-2">Образование: </p>
+            {% for education in resume.education.all %}
+                <div class="ps-3 pt-2 border-bottom border-top">
+                    <span class="fw-bold">Учебное заведение: </span><span>{{ education.name }}<br></span>
+                    <span class="fw-bold">Начало обучения: </span><span>{{ education.start_date }}<br></span>
+                    <span class="fw-bold">Конец обучения: </span><span>{{ education.end_date }}<br></span>
+                    <span class="fw-bold">Специальность: </span><span>{{ education.speciality }}<br></span>
+                    {% if education.additional_info %}
+                        <span class="fw-bold">Доп. информация: </span><span>{{ education.additional_info }}<br></span>
+                    {% endif %}
+                    <a href="#" class="btn btn-secondary mb-2">Редактировать блок образование</a><br>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <a href="#" class="btn btn-secondary mt-2">Добавить блок образование</a><br>
+
+        <span class="fw-bold">Обо мне: </span><span>{{ resume.about_worker }}<br></span>
+    </div>
+{% endblock %}
