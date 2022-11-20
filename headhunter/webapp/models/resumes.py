@@ -8,7 +8,7 @@ from webapp.models.categories import CategoryChoices
 
 class Resumes(BaseModel):
     author = models.ForeignKey(
-        verbose_name='Автор',
+        verbose_name='Автор *',
         to=get_user_model(),
         related_name='resumes',
         null=False,
@@ -16,19 +16,19 @@ class Resumes(BaseModel):
         on_delete=models.CASCADE
     )
     name = models.CharField(
-        verbose_name="Имя",
+        verbose_name="Имя *",
         max_length=100,
         null=False,
         blank=False
     )
     last_name = models.CharField(
-        verbose_name="Фамилия",
+        verbose_name="Фамилия *",
         max_length=100,
         null=False,
         blank=False
     )
     position = models.CharField(
-        verbose_name="Позиция",
+        verbose_name="Позиция *",
         max_length=100,
         null=False,
         blank=False
@@ -42,7 +42,7 @@ class Resumes(BaseModel):
     salary = models.IntegerField(
         null=False,
         blank=False,
-        verbose_name='Уровень дохода',
+        verbose_name='Уровень дохода *',
         validators=[
             MinValueValidator(0),
             MaxValueValidator(1000000000)
@@ -52,11 +52,11 @@ class Resumes(BaseModel):
         max_length=20,
         null=False,
         blank=False,
-        verbose_name='Телефон'
+        verbose_name='Телефон *'
 
     )
     email = models.EmailField(
-        verbose_name='Email',
+        verbose_name='Email *',
         unique=False,
         null=False,
         blank=False,
@@ -65,7 +65,7 @@ class Resumes(BaseModel):
         max_length=200,
         null=False,
         blank=False,
-        verbose_name='Telegram'
+        verbose_name='Telegram *'
     )
     facebook = models.URLField(
         max_length=200,
