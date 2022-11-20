@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="d-flex flex-row flex-wrap">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Дата создания</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for resume in resumes_list %}
+                    <tr>
+                        <td class="col-3">
+                            <a class="list-unstyled text-dark" href="{% url 'resume' user.pk resume.pk %} ">
+                                {{ resume.name }} {{ resume.last_name }}
+                            </a>
+                        </td>
+
+                        <td class="col-3">
+                            {% if resume.is_hidden %}
+                                Inactive
+                            {% else %}
+                                Active
+                            {% endif %}
+                        </td>
+
+                        {% if not resume.created_at %}
+                            <td class="col-3"> ---- / -- / --</td>
+                        {% else %}
+                            <td class="col-3">{{ resume.created_at }}</td>
+                        {% endif %}
+
+                        <td class="col-3">
+                            {% if user_obj == user %}
+                                <form action="" method="get">
+                                    <input type="hidden" class="btn btn-primary" name="resume_pk"
+                                           value="{{ resume.pk }}">
+                                    {% if resume.is_hidden %}
+                                        <input type="submit" class="btn btn-primary" name="activate"
+                                               value="Активировать">
+                                    {% else %}
+                                        <input type="submit" class="btn btn-primary" name="deactivate"
+                                               value="Деактивировать">
+                                    {% endif %}
+                                </form>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
