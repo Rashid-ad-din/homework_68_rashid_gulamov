@@ -54,8 +54,10 @@
                 </div>
 
                 <div>
-                    <p class="p-0 m-0 fw-bold">{{ user_obj.username }}</p>
-                    <p class="p-0 m-0">{{ user_obj.user_info }}</p>
+                    <p class="p-0 m-0 fw-bold">Категория: {{ user_obj.get_usertype_display }}</p>
+                    <p class="p-0 m-0 fw-bold">Логин: {{ user_obj.username }}</p>
+                    <p class="p-0 m-0 fw-bold">Email: {{ user_obj.email }}</p>
+                    <p class="p-0 m-0 fw-bold">Телефон: {{ user_obj.phone }}</p>
                 </div>
 
             </div>

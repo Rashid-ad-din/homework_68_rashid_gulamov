@@ -23,7 +23,8 @@ class CustomUserCreationForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = (
-            'usertype', 'username', 'email', 'password', 'password_confirm', 'phone', 'avatar')
+            'usertype', 'username', 'first_name', 'last_name', 'email', 'password', 'password_confirm', 'phone',
+            'avatar')
 
     def clean(self):
         cleaned_data = super().clean()
@@ -49,8 +50,7 @@ class CustomUserCreationForm(forms.ModelForm):
 class UserChangeForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = ('username', 'email', 'phone', 'avatar')
-        labels = {'username': 'Логин', 'first_name': 'Имя', 'email': 'Email'}
+        fields = ('username', 'first_name', 'last_name', 'email', 'phone', 'avatar')
 
 
 class PasswordChangeForm(forms.ModelForm):
