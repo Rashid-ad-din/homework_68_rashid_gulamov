@@ -22,16 +22,14 @@
                         <td class="col-3">
                             <a class="list-unstyled text-dark" href="{% url 'vacancy' user.pk vacancy.pk %} ">
                                 {{ vacancy.position }}
-                                {{ vacancy.category }}
-                                {{ vacancy.salary }}
                             </a>
                         </td>
 
                         <td class="col-3">
                             {% if vacancy.is_hidden %}
-                                Inactive
+                                Неактивен
                             {% else %}
-                                Active
+                                Активен
                             {% endif %}
                         </td>
 

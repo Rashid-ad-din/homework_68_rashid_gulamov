@@ -9,5 +9,6 @@
         <span class="fw-bold">Описание: </span><span>{{ vacancy.description }}<br></span>
         <span class="fw-bold">Опыт работы: </span><span>{{ vacancy.min_experience }} - {{ vacancy.max_experience }} лет<br></span>
         <a href="{% url 'edit_vacancy' user.pk vacancy.pk %}" class="btn btn-secondary">Редактировать вакансию</a><br>
+        <a href="{% url 'delete_vacancy' user.pk vacancy.pk %}" class="btn btn-secondary">Удалить вакансию</a><br>
     </div>
 {% endblock %}

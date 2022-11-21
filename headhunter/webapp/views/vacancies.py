@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
-from django.views.generic import DetailView, CreateView, ListView, UpdateView
+from django.views.generic import DetailView, CreateView, ListView, UpdateView, DeleteView
 from webapp.models import Vacancies
 from accounts.models import Account
 from webapp.forms.vacancies import VacancyForm
@@ -55,7 +55,7 @@ class CreateVacancyView(LoginRequiredMixin, CreateView):
         return self.render_to_response(context)
 
     def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.request.user.pk})
+        return reverse('vacancies', kwargs={'pk': self.request.user.pk})
 
 
 class VacancyView(LoginRequiredMixin, DetailView):
@@ -71,3 +71,12 @@ class EditVacancyView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('vacancy', kwargs={'upk': self.request.user.pk, 'pk': self.object.pk})
+
+
+class DeleteVacancyView(LoginRequiredMixin, DeleteView):
+    template_name = 'vacancies/delete_vacancy.html'
+    model = Vacancies
+    context_object_name = 'vacancy'
+
+    def get_success_url(self):
+        return reverse('vacancies', kwargs={'pk': self.request.user.pk})
