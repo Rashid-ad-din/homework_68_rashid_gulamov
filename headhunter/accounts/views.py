@@ -1,14 +1,11 @@
-from urllib.parse import urlencode
-
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
-
 from accounts.forms import LoginForm, CustomUserCreationForm, UserChangeForm, PasswordChangeForm
-from accounts.models import Account
 
 
 class LoginView(TemplateView):
@@ -38,9 +35,10 @@ class LoginView(TemplateView):
         return redirect('index')
 
 
-def logout_view(request):
-    logout(request)
-    return redirect('index')
+class LogoutView(View):
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('index')
 
 
 class RegisterView(CreateView):
@@ -49,7 +47,7 @@ class RegisterView(CreateView):
     success_url = '/'
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             user.groups.add(1 if user.usertype == 'company' else 2)
@@ -60,8 +58,6 @@ class RegisterView(CreateView):
         return self.render_to_response(context)
 
 
-#
-#
 class ProfileView(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = 'profile.html'
@@ -91,7 +87,7 @@ class ProfileView(LoginRequiredMixin, DetailView):
 #         return super().get(request, *args, **kwargs)
 #
 #
-class UserChangeView(UpdateView):
+class UserChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserChangeForm
     template_name = 'user_change.html'
@@ -100,6 +96,13 @@ class UserChangeView(UpdateView):
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.pk})
 
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def form_valid(self, form):
+        user = form.save()
+        update_session_auth_hash(self.request, user)
+        return HttpResponseRedirect(self.get_success_url())
 
 #
 #
@@ -139,25 +142,20 @@ class UserChangeView(UpdateView):
 #         return context
 
 
-class PasswordChangeView(UpdateView):
+class PasswordChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     template_name = 'password_change.html'
     form_class = PasswordChangeForm
     context_object_name = 'user_obj'
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            user = request.user
-            password = form.cleaned_data.get('password')
-            user.set_password(password)
-            user.save()
-            login(request, user)
-            return redirect('profile', pk=user.pk)
-        # return redirect('profile', pk=self.request.user.pk)
-        context = {}
-        context['form'] = form
-        return self.render_to_response(context)
-
     def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.request.user.pk})
+        return reverse('profile', kwargs={'pk': self.object.pk})
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def form_valid(self, form):
+        user = form.save()
+        update_session_auth_hash(self.request, user)
+        return HttpResponseRedirect(self.get_success_url())
+
