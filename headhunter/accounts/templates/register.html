@@ -4,7 +4,7 @@
 
 {% block content %}
     <div style="padding-left: 145px;">
-        <form action="" method="POST">
+        <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
             <div class="form">
                 {% csrf_token %}
                 {% bootstrap_form form %}
@@ -12,7 +12,6 @@
             </div>
         </form>
     </div>
-
 
 
 {% endblock %}
@@ -32,9 +31,7 @@
                     label.innerHTML = 'Имя компании';
                 } else {label.innerHTML = 'Имя кандидата'}
             }
-
             select.addEventListener('change', event);
-
         });
     </script>
 {% endblock %}
