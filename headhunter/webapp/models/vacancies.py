@@ -74,7 +74,7 @@ class Vacancies(BaseModel):
     objects = HHProjectManager()
 
     def __str__(self):
-        return f"{self.author}"
+        return f"{self.position}"
 
     class Meta:
         db_table = "vacancy"

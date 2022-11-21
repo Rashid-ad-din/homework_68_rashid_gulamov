@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Просмотр вакансии</h2>
+    <div>
+        <span class="fw-bold">Название позиции: </span><span>{{ vacancy.position }}<br></span>
+        <span class="fw-bold">Категория: </span><span>{{ vacancy.category }}<br></span>
+        <span class="fw-bold">Уроень дохода: </span><span>{{ vacancy.salary }} тг.<br></span>
+        <span class="fw-bold">Описание: </span><span>{{ vacancy.description }}<br></span>
+        <span class="fw-bold">Опыт работы: </span><span>{{ vacancy.min_experience }} - {{ vacancy.max_experience }} лет<br></span>
+        <a href="{% url 'edit_vacancy' user.pk vacancy.pk %}" class="btn btn-secondary">Редактировать вакансию</a><br>
+    </div>
+{% endblock %}

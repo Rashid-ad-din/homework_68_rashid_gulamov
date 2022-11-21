@@ -53,7 +53,14 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link text-warning text-light pt-3" href="#">Вакансии {{ user.username }}</a>
+                            <a class="nav-link text-warning text-light pt-3" href="{% url 'vacancies' user.pk %}">Мои вакансии</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning text-light create" href="{% url 'create_vacancy' user.pk %}">
+                                <button type="button" class="btn btn-outline-success rounded-pill"
+                                        style="font-size: 19px">Создать вакансию
+                                </button>
+                            </a>
                         </li>
                     {% endif %}
 

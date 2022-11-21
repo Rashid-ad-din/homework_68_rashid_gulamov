@@ -44,7 +44,6 @@ def logout_view(request):
 
 
 class RegisterView(CreateView):
-    model = get_user_model()
     template_name = 'register.html'
     form_class = CustomUserCreationForm
     success_url = '/'

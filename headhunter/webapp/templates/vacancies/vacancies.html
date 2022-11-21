@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="d-flex flex-row flex-wrap">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Название позиции</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Дата создания</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ vacancy_list.all }}
+
+                {% for vacancy in vacancies_list %}
+                    <tr>
+                        <td class="col-3">
+                            <a class="list-unstyled text-dark" href="{% url 'vacancy' user.pk vacancy.pk %} ">
+                                {{ vacancy.position }}
+                                {{ vacancy.category }}
+                                {{ vacancy.salary }}
+                            </a>
+                        </td>
+
+                        <td class="col-3">
+                            {% if vacancy.is_hidden %}
+                                Inactive
+                            {% else %}
+                                Active
+                            {% endif %}
+                        </td>
+
+                        {% if not vacancy.created_at %}
+                            <td class="col-3"> ---- / -- / --</td>
+                        {% else %}
+                            <td class="col-3">{{ vacancy.created_at }}</td>
+                        {% endif %}
+
+                        <td class="col-3">
+                            {% if user_obj == user %}
+                                <form action="" method="get">
+                                    <input type="hidden" class="btn btn-primary" name="vacancy_pk"
+                                           value="{{ vacancy.pk }}">
+                                    {% if vacancy.is_hidden %}
+                                        <input type="submit" class="btn btn-primary" name="activate"
+                                               value="Активировать">
+                                    {% else %}
+                                        <input type="submit" class="btn btn-primary" name="deactivate"
+                                               value="Деактивировать">
+                                    {% endif %}
+                                </form>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
