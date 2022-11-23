@@ -8,8 +8,8 @@
         <span class="fw-bold">Уроень дохода: </span><span>{{ vacancy.salary }} тг.<br></span>
         <span class="fw-bold">Описание: </span><span>{{ vacancy.description }}<br></span>
         <span class="fw-bold">Опыт работы: </span><span>{{ vacancy.min_experience }} - {{ vacancy.max_experience }} лет<br></span>
-        <a href="{% url 'edit_vacancy' user.pk vacancy.pk %}" class="btn btn-secondary">Редактировать вакансию</a><br>
-        <a href="{% url 'delete_vacancy' user.pk vacancy.pk %}" class="btn btn-secondary">Удалить вакансию</a><br>
+        <a href="{% url 'edit_vacancy' vacancy.pk %}" class="btn btn-secondary">Редактировать вакансию</a><br>
+        <a href="{% url 'delete_vacancy' vacancy.pk %}" class="btn btn-secondary">Удалить вакансию</a><br>
         {% if request.user.usertype == 'candidate' %}
             <div class="row">
                 <div class="col-2">
@@ -30,7 +30,7 @@
                                 <dt class="col-sm-3">ФИО</dt>
                                 <dd class="col-sm-9">{{ respond.resume.name }} {{ respond.resume.last_name }}</dd>
                                 <dt class="col-sm-3">Должность</dt>
-                                <dd class="col-sm-9"><a class="resum" href="{% url 'resume' user.pk respond.resume.pk %}">{{ respond.resume.position }}</a></dd>
+                                <dd class="col-sm-9"><a class="resum" href="{% url 'resume' respond.resume.pk %}">{{ respond.resume.position }}</a></dd>
                                 <dt class="col-sm-3">Открыть чат</dt>
                                 <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
                             </dl>

@@ -3,7 +3,7 @@
 {% block content %}
     <h2 class="text-center">Curiculum vitae</h2>
     <div>
-        <a href="{% url 'edit_resume' user.pk resume.pk %}" class="btn btn-secondary">Редактировать основной блок
+        <a href="{% url 'edit_resume' resume.pk %}" class="btn btn-secondary">Редактировать основной блок
             резюме</a><br>
         <span class="fw-bold">Автор: </span><span>{{ resume.name }} {{ resume.last_name }}<br></span>
         <span class="fw-bold">Название: </span><span>{{ resume.position }}<br></span>
@@ -81,7 +81,7 @@
                                 <dt class="col-sm-3">Компания</dt>
                                 <dd class="col-sm-9">{{ respond.vacancy.author.username }}</dd>
                                 <dt class="col-sm-3">Должность</dt>
-                                <dd class="col-sm-9"><a class="resum" href="{% url 'vacancy' user.pk respond.vacancy.pk %}">{{ respond.vacancy.position }}</a></dd>
+                                <dd class="col-sm-9"><a class="resum" href="{% url 'vacancy' respond.vacancy.pk %}">{{ respond.vacancy.position }}</a></dd>
                                 <dt class="col-sm-3">Открыть чат</dt>
                                 <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
                             </dl>

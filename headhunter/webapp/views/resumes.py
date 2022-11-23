@@ -58,8 +58,6 @@ class ListResumesView(LoginRequiredMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['user_obj'] = self.user_obj
-        print(self.request.GET.get('pk'))
-        print(kwargs.get('pk'))
         return context
 
 
@@ -82,4 +80,4 @@ class EditResumeView(LoginRequiredMixin, UpdateView):
     form_class = ResumeForm
 
     def get_success_url(self):
-        return reverse('resume', kwargs={'upk': self.request.user.pk, 'pk': self.object.pk})
+        return reverse('resume', kwargs={'pk': self.object.pk})

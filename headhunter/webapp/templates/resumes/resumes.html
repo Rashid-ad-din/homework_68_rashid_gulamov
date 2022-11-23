@@ -19,7 +19,7 @@
                 {% for resume in resumes_list %}
                     <tr>
                         <td class="col-3">
-                            <a class="list-unstyled text-dark" href="{% url 'resume' user.pk resume.pk %} ">
+                            <a class="list-unstyled text-dark" href="{% url 'resume' resume.pk %} ">
                                 {{ resume.name }} {{ resume.last_name }}
                             </a>
                         </td>

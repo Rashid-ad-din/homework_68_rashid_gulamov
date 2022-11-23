@@ -79,7 +79,7 @@ class EditVacancyView(LoginRequiredMixin, UpdateView):
     form_class = VacancyForm
 
     def get_success_url(self):
-        return reverse('vacancy', kwargs={'upk': self.request.user.pk, 'pk': self.object.pk})
+        return reverse('vacancy', kwargs={'pk': self.object.pk})
 
 
 class DeleteVacancyView(LoginRequiredMixin, DeleteView):
