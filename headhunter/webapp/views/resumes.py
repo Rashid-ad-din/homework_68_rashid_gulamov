@@ -1,12 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from accounts.models import Account
 from webapp.forms.resumes import ResumeForm
-from webapp.models import Resumes
 from webapp.models import Respond
+from webapp.models import Resumes
 from webapp.models import Vacancies
 
 
@@ -39,17 +39,17 @@ class ListResumesView(LoginRequiredMixin, ListView):
         resume_pk = request.GET.get('resume_pk')
         activate = request.GET.get('activate')
         if activate:
-            resume = get_object_or_404(Resumes, pk=pk)
+            resume = get_object_or_404(Resumes, pk=request.GET.get('resume_pk'))
             resume.is_hidden = 0
             resume.save()
         deactivate = request.GET.get('deactivate')
         if deactivate:
-            resume = get_object_or_404(Resumes, pk=pk)
+            resume = get_object_or_404(Resumes, pk=request.GET.get('resume_pk'))
             resume.is_hidden = 1
             resume.save()
         refresh = request.GET.get('refresh')
         if refresh:
-            resume = get_object_or_404(Resumes, pk=pk)
+            resume = get_object_or_404(Resumes, pk=request.GET.get('resume_pk'))
             resume.save()
         return super(ListResumesView, self).get(request, *args, **kwargs)
 
@@ -68,11 +68,12 @@ class ResumeView(LoginRequiredMixin, DetailView):
     model = Resumes
     context_object_name = 'resume'
 
-    def get(self, request, pk, *args, **kwargs):
-        self.user_obj = self.request.user
+    def get(self, request, *args, **kwargs):
+        res = get_object_or_404(Resumes, pk=kwargs.get('pk'))
+        self.user_obj = res.author
         refresh = request.GET.get('refresh')
         if refresh:
-            resume = get_object_or_404(Resumes, pk=pk)
+            resume = get_object_or_404(Resumes, pk=kwargs.get('pk'))
             resume.save()
         return super(ResumeView, self).get(request, *args, **kwargs)
 
@@ -92,3 +93,12 @@ class EditResumeView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('resume', kwargs={'pk': self.object.pk})
+
+
+class DeleteResumeView(DeleteView):
+    template_name = 'resumes/delete_resume.html'
+    model = Resumes
+    context_object_name = 'resume'
+
+    def get_success_url(self):
+        return reverse('resumes', kwargs={'pk': self.request.user.pk})

@@ -12,6 +12,7 @@
                     <th scope="col">Дата обновления</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,13 +25,9 @@
                             </a>
                         </td>
 
-                        {% if not resume.created_at %}
-                            <td class="col-4"> ---- / -- / --</td>
-                        {% else %}
-                            <td class="col-4">{{ resume.updated_at }}</td>
-                        {% endif %}
+                        <td class="col-3">{{ resume.updated_at }}</td>
 
-                        <td class="col-1">
+                        <td class="col-2">
                             {% if user_obj == user %}
                                 <form action="" method="get">
                                     <input type="hidden" name="resume_pk"
@@ -46,7 +43,7 @@
                             {% endif %}
                         </td>
 
-                        <td class="col-1">
+                        <td class="col-2">
                             {% if user_obj == user %}
                                 <form action="" method="get">
                                     <input type="hidden" name="resume_pk"
@@ -54,6 +51,13 @@
                                     <input type="submit" class="btn btn-primary" name="refresh"
                                            value="Обновить">
                                 </form>
+                            {% endif %}
+                        </td>
+
+                        <td class="col-1">
+                            {% if user_obj == user %}
+                                <a href="{% url 'delete_resume' resume.pk %}" class="btn btn-danger">Удалить
+                                    резюме</a>
                             {% endif %}
                         </td>
 
