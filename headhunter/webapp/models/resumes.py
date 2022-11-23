@@ -15,7 +15,13 @@ class Resumes(BaseModel):
         blank=False,
         on_delete=models.CASCADE
     )
-    name = models.CharField(
+    title = models.CharField(
+        verbose_name="Наименование резюме *",
+        max_length=100,
+        null=False,
+        blank=False
+    )
+    first_name = models.CharField(
         verbose_name="Имя *",
         max_length=100,
         null=False,
@@ -105,7 +111,7 @@ class Resumes(BaseModel):
     objects = HHProjectManager()
 
     def __str__(self):
-        return f"{self.name} {self.position}"
+        return f"{self.first_name} {self.position}"
 
     class Meta:
         db_table = "resume"

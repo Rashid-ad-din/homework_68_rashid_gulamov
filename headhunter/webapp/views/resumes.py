@@ -34,21 +34,23 @@ class ListResumesView(LoginRequiredMixin, ListView):
     template_name = 'resumes/resumes.html'
     model = Resumes
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, pk, *args, **kwargs):
+        self.user_obj = get_object_or_404(Account, pk=pk)
         resume_pk = request.GET.get('resume_pk')
-
         activate = request.GET.get('activate')
         if activate:
-            resume = get_object_or_404(Resumes, pk=resume_pk)
+            resume = get_object_or_404(Resumes, pk=pk)
             resume.is_hidden = 0
             resume.save()
-
         deactivate = request.GET.get('deactivate')
         if deactivate:
-            resume = get_object_or_404(Resumes, pk=resume_pk)
+            resume = get_object_or_404(Resumes, pk=pk)
             resume.is_hidden = 1
             resume.save()
-        self.user_obj = get_object_or_404(Account, pk=kwargs.get('pk'))
+        refresh = request.GET.get('refresh')
+        if refresh:
+            resume = get_object_or_404(Resumes, pk=pk)
+            resume.save()
         return super(ListResumesView, self).get(request, *args, **kwargs)
 
     def get_queryset(self, **kwargs):
@@ -66,11 +68,20 @@ class ResumeView(LoginRequiredMixin, DetailView):
     model = Resumes
     context_object_name = 'resume'
 
+    def get(self, request, pk, *args, **kwargs):
+        self.user_obj = self.request.user
+        refresh = request.GET.get('refresh')
+        if refresh:
+            resume = get_object_or_404(Resumes, pk=pk)
+            resume.save()
+        return super(ResumeView, self).get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         vacancy = Vacancies.objects.filter(author_id=self.request.user.pk, is_hidden="False")
         kwargs['vacancies'] = vacancy
         responds = Respond.objects.all()
         kwargs['responds'] = responds
+        kwargs['user_obj'] = self.user_obj
         return super().get_context_data(**kwargs, form=ResumeForm())
 
 
