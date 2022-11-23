@@ -105,7 +105,7 @@ class Resumes(BaseModel):
     objects = HHProjectManager()
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} {self.position}"
 
     class Meta:
         db_table = "resume"

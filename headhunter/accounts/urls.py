@@ -3,6 +3,7 @@ from django.urls import path
 from accounts.views import LoginView, LogoutView, RegisterView, ProfileView, UserChangeView, PasswordChangeView
 from webapp.views.resumes import CreateResumeView, ListResumesView, ResumeView, EditResumeView
 from webapp.views.vacancies import CreateVacancyView, ListVacancyView, VacancyView, EditVacancyView, DeleteVacancyView
+from webapp.views.responds import RespondListView
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
@@ -20,4 +21,5 @@ urlpatterns = [
     path('profile/<int:upk>/vacancies/<int:pk>/', VacancyView.as_view(), name='vacancy'),
     path('profile/<int:upk>/vacancies/<int:pk>/edit', EditVacancyView.as_view(), name='edit_vacancy'),
     path('profile/<int:upk>/vacancies/<int:pk>/delete', DeleteVacancyView.as_view(), name='delete_vacancy'),
+    path('profile/<int:pk>/responds/', RespondListView.as_view(), name='responds'),
 ]
