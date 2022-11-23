@@ -1,0 +1,33 @@
+<h4 class="fw-bold mb-1">Основной блок</h4>
+            <span class="fw-bold">Автор: </span><span>{{ resume.first_name }} {{ resume.last_name }}<br></span>
+            <span class="fw-bold">Название: </span><span>{{ resume.position }}<br></span>
+            <span class="fw-bold">Категория: </span><span>{{ resume.get_category_display }}<br></span>
+            <span class="fw-bold">Уровень дохода: </span><span>{{ resume.salary }} тг.<br></span>
+            <span class="fw-bold">Телефон: </span><span>{{ resume.phone_number }}<br></span>
+            <span class="fw-bold">Email: </span><span>{{ resume.email }}<br></span>
+            <span class="fw-bold">Telegram: </span><span>{{ resume.telegram }}<br></span>
+            {% if resume.facebook %}
+                <span class="fw-bold">Facebook: </span><span>{{ resume.facebook }}<br></span>
+            {% endif %}
+            {% if resume.linkedin %}
+                <span class="fw-bold">Linkedin: </span><span>{{ resume.linkedin }}<br></span>
+            {% endif %}
+            <span class="fw-bold">Обо мне: </span><span>{{ resume.about_worker }}<br></span>
+
+            <div class="d-flex">
+                {% if user_obj == user %}
+                    <div>
+                        <a href="{% url 'edit_resume' resume.pk %}" class="btn btn-secondary">Редактировать основной
+                            блок
+                            резюме</a><br>
+                    </div>
+                    <div class="ms-2">
+                        <form action="" method="get">
+                            <input type="hidden" name="resume_pk"
+                                   value="{{ resume.pk }}">
+                            <input type="submit" class="btn btn-secondary" name="refresh"
+                                   value="Обновить">
+                        </form>
+                    </div>
+                {% endif %}
+            </div>

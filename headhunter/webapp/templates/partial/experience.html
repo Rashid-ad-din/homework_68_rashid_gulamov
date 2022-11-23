@@ -1,0 +1,28 @@
+<h4 class="fw-bold mb-1 mt-2">Опыт работы:</h4>
+<div>
+    {% for experience in resume.experience.all %}
+        <div class="ps-3 pt-2 border-top">
+            <span class="fw-bold">Организация: </span><span>{{ experience.name_of_company }}<br></span>
+            <span class="fw-bold">Стаж: </span><span>{{ experience.experience }} лет,мес.<br></span>
+            {% if experience.start_date %}
+                <span class="fw-bold">Дата начала работы: </span>
+                <span>{{ experience.start_date }}<br></span>
+            {% endif %}
+            {% if experience.start_date %}
+                <span class="fw-bold">Дата увольнения: </span><span>{{ experience.end_date }}<br></span>
+            {% endif %}
+            <span class="fw-bold">Позиция: </span><span>{{ experience.position }}<br></span>
+            <span class="fw-bold">Обязанности: </span><span>{{ experience.responsibilities }}<br></span>
+            {% if experience.start_date %}
+                <span class="fw-bold">Доп. информация: <br></span>
+                <span>{{ experience.additional_info }}<br></span>
+            {% endif %}
+
+            {% if user_obj == user %}
+                <a href="#" class="btn btn-secondary mt-2">Редактировать</a>
+                <a href="{% url 'delete_experience' resume.pk experience.pk %}"
+                   class="btn btn-danger mt-2">Удалить</a><br>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

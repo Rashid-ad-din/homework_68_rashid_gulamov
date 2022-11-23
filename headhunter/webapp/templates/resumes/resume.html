@@ -1,166 +1,123 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="text-center">{{ resume.title }}</h2>
-    <div>
-        <div class="d-flex">
-            <div>
-                <a href="{% url 'edit_resume' resume.pk %}" class="btn btn-secondary">Редактировать основной блок
-                    резюме</a><br>
-            </div>
-            <div class="ms-3">
-                {% if user_obj == user %}
-                    <form action="" method="get">
-                        <input type="hidden" name="resume_pk"
-                               value="{{ resume.pk }}">
-                        <input type="submit" class="btn btn-secondary" name="refresh"
-                               value="Обновить">
-                    </form>
-                {% endif %}
-            </div>
-        </div>
-
-        <span class="fw-bold">Автор: </span><span>{{ resume.first_name }} {{ resume.last_name }}<br></span>
-        <span class="fw-bold">Название: </span><span>{{ resume.position }}<br></span>
-        <span class="fw-bold">Категория: </span><span>{{ resume.get_category_display }}<br></span>
-        <span class="fw-bold">Уровень дохода: </span><span>{{ resume.salary }} тг.<br></span>
-        <span class="fw-bold">Телефон: </span><span>{{ resume.phone_number }}<br></span>
-        <span class="fw-bold">Email: </span><span>{{ resume.email }}<br></span>
-        <span class="fw-bold">Telegram: </span><span>{{ resume.telegram }}<br></span>
-        {% if resume.facebook %}
-            <span class="fw-bold">Facebook: </span><span>{{ resume.facebook }}<br></span>
-        {% endif %}
-        {% if resume.linkedin %}
-            <span class="fw-bold">Linkedin: </span><span>{{ resume.linkedin }}<br></span>
-        {% endif %}
-
-        {% if resume.experience.all %}
-            <p class="fw-bold mb-0">Опыт работы:</p>
-            {% for experience in resume.experience.all %}
-                <div class="ps-3 pt-2 border-bottom border-top">
-                    <span class="fw-bold">Организация:</span><span>{{ experience.name_of_company }}<br></span>
-                    <span class="fw-bold">Стаж: </span><span>{{ experience.experience }} лет,мес.<br></span>
-                    {% if experience.start_date %}
-                        <span class="fw-bold">Дата начала работы: </span><span>{{ experience.start_date }}<br></span>
-                    {% endif %}
-                    {% if experience.start_date %}
-                        <span class="fw-bold">Дата увольнения: </span><span>{{ experience.end_date }}<br></span>
-                    {% endif %}
-                    <span class="fw-bold">Позиция: </span><span>{{ experience.position }}<br></span>
-                    <span class="fw-bold">Обязанности: </span><span>{{ experience.responsibilities }}<br></span>
-                    {% if experience.start_date %}
-                        <span class="fw-bold">Доп. информация: <br></span>
-                        <span>{{ experience.additional_info }}<br></span>
-                    {% endif %}
-                    <a href="#" class="btn btn-secondary mb-2">Редактировать блок опыта работы</a><br>
-                </div>
-            {% endfor %}
-        {% endif %}
-        <a href="#" class="btn btn-secondary mt-2">Добавить блок опыта работы</a>
-
-        {% if resume.education.all %}
-            <p class="fw-bold mb-0 pt-2">Образование: </p>
-            {% for education in resume.education.all %}
-                <div class="ps-3 pt-2 border-bottom border-top">
-                    <span class="fw-bold">Учебное заведение: </span><span>{{ education.name }}<br></span>
-                    <span class="fw-bold">Начало обучения: </span><span>{{ education.start_date }}<br></span>
-                    <span class="fw-bold">Конец обучения: </span><span>{{ education.end_date }}<br></span>
-                    <span class="fw-bold">Специальность: </span><span>{{ education.speciality }}<br></span>
-                    {% if education.additional_info %}
-                        <span class="fw-bold">Доп. информация: </span><span>{{ education.additional_info }}<br></span>
-                    {% endif %}
-                    <a href="#" class="btn btn-secondary mb-2">Редактировать блок образование</a><br>
-                </div>
-            {% endfor %}
-        {% endif %}
-        <a href="#" class="btn btn-secondary mt-2">Добавить блок образование</a><br>
-        {% if request.user.usertype == 'company' %}
-            <div class="row">
-                <div class="col-2">
-                    <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">Отправить приглашение
-                    </button>
-                </div>
-                <div id="place"></div>
-            </div>
-        {% endif %}
-
-        <span class="fw-bold">Обо мне: </span><span>{{ resume.about_worker }}<br></span>
-    </div>
-    {% if request.user.pk == resume.author.pk %}
+    {% if user_obj == user %}
+        <h2 class="fw-bold text-center">{{ resume.title }}</h2>
+        <a href="{% url 'delete_resume' resume.pk %}" class="btn btn-danger" style="margin-left: 950px;">
+            Удалить резюме</a>
         <div>
-            <h2>Отклики резюме</h2>
-            {% for respond in responds %}
-                {% if respond.resume == resume %}
-                    <div class="card" style="margin-bottom: 30px; width: 70%">
-                        <div class="card-body">
-                            <dl class="row" style="margin-bottom: 0px;">
-                                <dt class="col-sm-3">Компания</dt>
-                                <dd class="col-sm-9">{{ respond.vacancy.author.username }}</dd>
-                                <dt class="col-sm-3">Должность</dt>
-                                <dd class="col-sm-9"><a class="resum"
-                                                        href="{% url 'vacancy' respond.vacancy.pk %}">{{ respond.vacancy.position }}</a>
-                                </dd>
-                                <dt class="col-sm-3">Открыть чат</dt>
-                                <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i
-                                        class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
-                            </dl>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% endif %}
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Выберите резюме</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            {% include 'partial/resume_main_block.html' %}
+
+            {% if resume.experience.all %}
+                {% include 'partial/experience.html' %}
+            {% endif %}
+
+            <div class="border-bottom">
+                {% if user_obj == user %}
+                    <a href="{% url 'create_experience' resume.pk %}" class="btn btn-secondary mt-2 mb-2 ms-3">Добавить блок опыта работы</a><br>
+                {% endif %}
+            </div>
+
+            {% if resume.education.all %}
+                {% include 'partial/education.html' %}
+            {% endif %}
+
+            <div class="border-bottom">
+                {% if user_obj == user %}
+                    <a href="{% url 'create_education' resume.pk %}" class="btn btn-secondary mb-2 ms-3">Добавить блок
+                        образование</a><br>
+                {% endif %}
+            </div>
+
+            {% if request.user.usertype == 'company' %}
+                <div class="row">
+                    <div class="col-2">
+                        <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Отправить приглашение
+                        </button>
+                    </div>
+                    <div id="place"></div>
                 </div>
-                <div class="modal-body">
-                    {% for vacancy in vacancies %}
-                        <div>
-                            <button id="{{ vacancy.pk }}" data-bs-dismiss="modal" type="button"
-                                    onclick="addResume(event)" data-name="{{ vacancy.pk }}" value="{{ resume.pk }}"
-                                    class="btn btn-light">{{ vacancy.position }}
-                            </button>
+            {% endif %}
+        </div>
+
+        {% if request.user.pk == resume.author.pk %}
+            <div>
+                <h2>Отклики резюме</h2>
+                {% for respond in responds %}
+                    {% if respond.resume == resume %}
+                        <div class="card" style="margin-bottom: 30px; width: 70%">
+                            <div class="card-body">
+                                <dl class="row" style="margin-bottom: 0px;">
+                                    <dt class="col-sm-3">Компания</dt>
+                                    <dd class="col-sm-9">{{ respond.vacancy.author.username }}</dd>
+                                    <dt class="col-sm-3">Должность</dt>
+                                    <dd class="col-sm-9"><a class="resum"
+                                                            href="{% url 'vacancy' respond.vacancy.pk %}">
+                                        {{ respond.vacancy.position }}</a>
+                                    </dd>
+                                    <dt class="col-sm-3">Открыть чат</dt>
+                                    <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i
+                                            class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
+                                </dl>
+                            </div>
                         </div>
-                    {% empty %}
-                        <p>У вас нет резюме</p>
-                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Выберите резюме</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% for vacancy in vacancies %}
+                            <div>
+                                <button id="{{ vacancy.pk }}" data-bs-dismiss="modal" type="button"
+                                        onclick="addResume(event)" data-name="{{ vacancy.pk }}" value="{{ resume.pk }}"
+                                        class="btn btn-light">{{ vacancy.position }}
+                                </button>
+                            </div>
+                        {% empty %}
+                            <p>У вас нет резюме</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        function addResume(event) {
-            event.preventDefault()
-            let answer = {
-                vacancy: event.target.dataset.name,
-                resume: event.target.value
-            }
-            console.log(answer)
-            var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
-            $.ajax({
-                url: `http://localhost:8000/api/add_resume/`,
-                method: 'POST',
-                headers: {"X-CSRFToken": $crf_token},
-                data: JSON.stringify(answer),
-                dataType: "json",
-                contentType: "application/json",
-                success: function (data) {
-                    $('#place').html(`<p style="color: limegreen">Отклик отправлен`)
-                },
-                error: function (response, headers) {
-                    console.log(response)
-                    $('#place').html(`<p style="color: red">Вы уже откликнулись на эту вакансию`)
+
+        <script>
+            function addResume(event) {
+                event.preventDefault()
+                let answer = {
+                    vacancy: event.target.dataset.name,
+                    resume: event.target.value
                 }
-            })
+                console.log(answer)
+                var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+                $.ajax({
+                    url: `http://localhost:8000/api/add_resume/`,
+                    method: 'POST',
+                    headers: {"X-CSRFToken": $crf_token},
+                    data: JSON.stringify(answer),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data) {
+                        $('#place').html(`<p style="color: limegreen">Отклик отправлен`)
+                    },
+                    error: function (response, headers) {
+                        console.log(response)
+                        $('#place').html(`<p style="color: red">Вы уже откликнулись на эту вакансию`)
+                    }
+                })
 
-        }
-    </script>
-
+            }
+        </script>
+    {% endif %}
 {% endblock %}
