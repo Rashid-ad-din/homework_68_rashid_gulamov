@@ -64,12 +64,6 @@ class Vacancies(BaseModel):
         default=False,
         null=False
     )
-    resumes = models.ManyToManyField(
-        verbose_name='Резюме',
-        to='webapp.Resumes',
-        related_name='worker_resume',
-        blank=True
-    )
 
     objects = HHProjectManager()
 

@@ -20,7 +20,7 @@
                 {% for vacancy in vacancies_list %}
                     <tr>
                         <td class="col-3">
-                            <a class="list-unstyled text-dark" href="{% url 'vacancy' user.pk vacancy.pk %} ">
+                            <a class="list-unstyled text-dark" href="{% url 'vacancy' vacancy.pk %} ">
                                 {{ vacancy.position }}
                             </a>
                         </td>
