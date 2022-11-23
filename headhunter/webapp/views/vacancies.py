@@ -5,6 +5,8 @@ from django.views.generic import DetailView, CreateView, ListView, UpdateView, D
 from webapp.models import Vacancies
 from accounts.models import Account
 from webapp.forms.vacancies import VacancyForm
+from webapp.models import Resumes
+from webapp.models import Respond
 
 
 class ListVacancyView(LoginRequiredMixin, ListView):
@@ -62,6 +64,13 @@ class VacancyView(LoginRequiredMixin, DetailView):
     template_name = 'vacancies/vacancy.html'
     model = Vacancies
     context_object_name = 'vacancy'
+
+    def get_context_data(self, **kwargs):
+        resumes = Resumes.objects.filter(author_id=self.request.user.pk, is_hidden="False")
+        kwargs['resumes'] = resumes
+        responds = Respond.objects.all()
+        kwargs['responds'] = responds
+        return super().get_context_data(**kwargs, form=VacancyForm())
 
 
 class EditVacancyView(LoginRequiredMixin, UpdateView):

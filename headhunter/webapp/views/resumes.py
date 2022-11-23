@@ -6,6 +6,8 @@ from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from accounts.models import Account
 from webapp.forms.resumes import ResumeForm
 from webapp.models import Resumes
+from webapp.models import Respond
+from webapp.models import Vacancies
 
 
 class CreateResumeView(LoginRequiredMixin, CreateView):
@@ -65,6 +67,13 @@ class ResumeView(LoginRequiredMixin, DetailView):
     template_name = 'resumes/resume.html'
     model = Resumes
     context_object_name = 'resume'
+
+    def get_context_data(self, **kwargs):
+        vacancy = Vacancies.objects.filter(author_id=self.request.user.pk, is_hidden="False")
+        kwargs['vacancies'] = vacancy
+        responds = Respond.objects.all()
+        kwargs['responds'] = responds
+        return super().get_context_data(**kwargs, form=ResumeForm())
 
 
 class EditResumeView(LoginRequiredMixin, UpdateView):

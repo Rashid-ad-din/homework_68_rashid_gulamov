@@ -37,19 +37,7 @@
                               class="btn btn-light mt-2 ms-3">
                             Смена пароля</a></p>
                     {% else %}
-                        {% if user_obj not in user.subscriptions.all %}
-                            <form action="" method="get">
-                                <input type="hidden" name="subscribe_to" value="{{ user_obj.pk }}">
-                                <input type="submit" value="Подписаться"
-                                       class="btn btn-primary mt-2 ms-3">
-                            </form>
-                        {% else %}
-                            <form action="" method="get">
-                                <input type="hidden" name="subscribe_of" value="{{ user_obj.pk }}">
-                                <input type="submit" value="Отписаться"
-                                       class="btn btn-light mt-2 ms-3">
-                            </form>
-                        {% endif %}
+
                     {% endif %}
                 </div>
 

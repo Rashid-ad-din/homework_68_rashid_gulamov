@@ -6,8 +6,9 @@
         <a href="{% url 'edit_resume' user.pk resume.pk %}" class="btn btn-secondary">Редактировать основной блок
             резюме</a><br>
         <span class="fw-bold">Автор: </span><span>{{ resume.name }} {{ resume.last_name }}<br></span>
+        <span class="fw-bold">Название: </span><span>{{ resume.position }}<br></span>
         <span class="fw-bold">Категория: </span><span>{{ resume.get_category_display }}<br></span>
-        <span class="fw-bold">Уроень дохода: </span><span>{{ resume.salary }} тг.<br></span>
+        <span class="fw-bold">Уровень дохода: </span><span>{{ resume.salary }} тг.<br></span>
         <span class="fw-bold">Телефон: </span><span>{{ resume.phone_number }}<br></span>
         <span class="fw-bold">Email: </span><span>{{ resume.email }}<br></span>
         <span class="fw-bold">Telegram: </span><span>{{ resume.telegram }}<br></span>
@@ -58,7 +59,87 @@
             {% endfor %}
         {% endif %}
         <a href="#" class="btn btn-secondary mt-2">Добавить блок образование</a><br>
+        {% if request.user.usertype == 'company' %}
+            <div class="row">
+                <div class="col-2">
+                    <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Отправить приглашение</button>
+                </div>
+                <div id="place"></div>
+            </div>
+        {% endif %}
 
         <span class="fw-bold">Обо мне: </span><span>{{ resume.about_worker }}<br></span>
     </div>
+    {% if request.user.pk == resume.author.pk %}
+        <div>
+            <h2>Отклики резюме</h2>
+            {% for respond in responds %}
+            {% if respond.resume == resume %}
+                <div class="card" style="margin-bottom: 30px; width: 70%">
+                    <div class="card-body">
+                            <dl class="row" style="margin-bottom: 0px;">
+                                <dt class="col-sm-3">Компания</dt>
+                                <dd class="col-sm-9">{{ respond.vacancy.author.username }}</dd>
+                                <dt class="col-sm-3">Должность</dt>
+                                <dd class="col-sm-9"><a class="resum" href="{% url 'vacancy' user.pk respond.vacancy.pk %}">{{ respond.vacancy.position }}</a></dd>
+                                <dt class="col-sm-3">Открыть чат</dt>
+                                <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
+                            </dl>
+                        </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Выберите резюме</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% for vacancy in vacancies %}
+                        <div>
+                            <button id="{{ vacancy.pk }}" data-bs-dismiss="modal" type="button"
+                                    onclick="addResume(event)" data-name="{{ vacancy.pk }}" value="{{ resume.pk }}"
+                                    class="btn btn-light">{{ vacancy.position }}
+                            </button>
+                        </div>
+                    {% empty %}
+                        <p>У вас нет резюме</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function addResume(event) {
+            event.preventDefault()
+            let answer = {
+                vacancy: event.target.dataset.name,
+                resume: event.target.value
+            }
+            console.log(answer)
+            var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+            $.ajax({
+                url: `http://localhost:8000/api/add_resume/`,
+                method: 'POST',
+                headers: {"X-CSRFToken": $crf_token},
+                data: JSON.stringify(answer),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    $('#place').html(`<p style="color: limegreen">Отклик отправлен`)
+                },
+                error: function (response, headers) {
+                    console.log(response)
+                    $('#place').html(`<p style="color: red">Вы уже откликнулись на эту вакансию`)
+                }
+            })
+
+        }
+    </script>
+
 {% endblock %}
