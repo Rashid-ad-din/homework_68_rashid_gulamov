@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div style="display: flex; flex-wrap: wrap" class="mt-5">
+        {% if request.user.usertype == candidate %}
+            {% for resume in resumes %}
+                {% if resume.publication == True %}
+                    <div class="card" style="width: 100%; margin: 5px">
+                        <div class="card-body">
+                            <a href="{% url 'detail_resume' resume.pk %}" style="text-decoration: none">
+                                <h5
+                                        class="card-title">{{ resume.position }}</h5>
+                            </a>
+                            <p class="card-text">Опубликовано: {% if resume.publication == False %} Нет {% else %} Да
+                            {% endif %}</p>
+                            <p class="card-text">{{ resume.user|capfirst }}</p>
+                            <p class="card-text">{{ resume.salary }}</p>
+                            <p class="card-text">{{ resume.work_experience.all.last }}</p>
+                            <p class="card-text">{{ resume.education.all.last }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+            {% endfor %}
+        {% else %}
+            <div class="container">
+                <div class="row row-cols-2">
+                    <div class="col-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+
+                    <div class="col-9">
+                        {% for vacancy in vacancies %}
+
+                            {% if vacancy.posted_status == True %}
+
+
+                                <div class="card" style="width: 100%; margin: 5px">
+                                    <div class="card-body">
+                                        <a href="{% url 'vacancy_details' vacancy.pk %}" style="text-decoration: none">
+                                            <h5
+                                                    class="card-title">{{ vacancy.position }}</h5>
+                                        </a>
+                                        <p class="card-text">{{ vacancy.author|capfirst }}</p>
+                                        <p class="card-text">Будьте первыми</p>
+                                        <p class="card-text">{{ vacancy.description }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
