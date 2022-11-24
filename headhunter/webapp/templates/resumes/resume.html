@@ -1,46 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if user_obj == user %}
+    {% if user_obj == user or user.usertype == 'company' %}
         <h2 class="fw-bold text-center">{{ resume.title }}</h2>
-        <a href="{% url 'delete_resume' resume.pk %}" class="btn btn-danger" style="margin-left: 950px;">
-            Удалить резюме</a>
-        <div>
 
-            {% include 'partial/resume_main_block.html' %}
+        {% if user_obj == user %}
+            <a href="{% url 'delete_resume' resume.pk %}" class="btn btn-danger" style="margin-left: 950px;">
+                Удалить резюме</a>
+            <div>
+        {% endif %}
 
-            {% if resume.experience.all %}
-                {% include 'partial/experience.html' %}
-            {% endif %}
+    {% include 'partial/resume_main_block.html' %}
 
-            <div class="border-bottom">
-                {% if user_obj == user %}
-                    <a href="{% url 'create_experience' resume.pk %}" class="btn btn-secondary mt-2 mb-2 ms-3">Добавить блок опыта работы</a><br>
-                {% endif %}
+    {% if resume.experience.all %}
+        {% include 'partial/experience.html' %}
+    {% endif %}
+
+    <div class="border-bottom">
+        {% if user_obj == user %}
+            <a href="{% url 'create_experience' resume.pk %}" class="btn btn-secondary mt-2 mb-2 ms-3">Добавить блок
+                опыта работы</a><br>
+        {% endif %}
+    </div>
+
+    {% if resume.education.all %}
+        {% include 'partial/education.html' %}
+    {% endif %}
+
+    <div class="border-bottom">
+        {% if user_obj == user %}
+            <a href="{% url 'create_education' resume.pk %}" class="btn btn-secondary mb-2 ms-3">Добавить блок
+                образование</a><br>
+        {% endif %}
+    </div>
+
+    {% if request.user.usertype == 'company' %}
+        <div class="row">
+            <div class="col-2">
+                <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Отправить приглашение
+                </button>
             </div>
-
-            {% if resume.education.all %}
-                {% include 'partial/education.html' %}
-            {% endif %}
-
-            <div class="border-bottom">
-                {% if user_obj == user %}
-                    <a href="{% url 'create_education' resume.pk %}" class="btn btn-secondary mb-2 ms-3">Добавить блок
-                        образование</a><br>
-                {% endif %}
-            </div>
-
-            {% if request.user.usertype == 'company' %}
-                <div class="row">
-                    <div class="col-2">
-                        <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">Отправить приглашение
-                        </button>
-                    </div>
-                    <div id="place"></div>
-                </div>
-            {% endif %}
+            <div id="place"></div>
         </div>
+    {% endif %}
+    </div>
 
         {% if request.user.pk == resume.author.pk %}
             <div>
