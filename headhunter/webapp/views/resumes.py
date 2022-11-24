@@ -40,17 +40,17 @@ class ListResumesView(LoginRequiredMixin, ListView):
         resume_pk = request.GET.get('resume_pk')
         activate = request.GET.get('activate')
         if activate:
-            resume = get_object_or_404(Resumes, pk=request.GET.get('resume_pk'))
+            resume = get_object_or_404(Resumes, pk=resume_pk)
             resume.is_hidden = 0
             resume.save()
         deactivate = request.GET.get('deactivate')
         if deactivate:
-            resume = get_object_or_404(Resumes, pk=request.GET.get('resume_pk'))
+            resume = get_object_or_404(Resumes, pk=resume_pk)
             resume.is_hidden = 1
             resume.save()
         refresh = request.GET.get('refresh')
         if refresh:
-            resume = get_object_or_404(Resumes, pk=request.GET.get('resume_pk'))
+            resume = get_object_or_404(Resumes, pk=resume_pk)
             resume.save()
         return super(ListResumesView, self).get(request, *args, **kwargs)
 
@@ -70,11 +70,10 @@ class ResumeView(LoginRequiredMixin, DetailView):
     context_object_name = 'resume'
 
     def get(self, request, *args, **kwargs):
-        res = get_object_or_404(Resumes, pk=kwargs.get('pk'))
-        self.user_obj = res.author
+        resume = get_object_or_404(Resumes, pk=kwargs.get('pk'))
+        self.user_obj = resume.author
         refresh = request.GET.get('refresh')
         if refresh:
-            resume = get_object_or_404(Resumes, pk=kwargs.get('pk'))
             resume.save()
         return super(ResumeView, self).get(request, *args, **kwargs)
 
@@ -94,7 +93,7 @@ class EditResumeView(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.change_resumes'
 
     def get_success_url(self):
-        return reverse('resume', kwargs={'pk': self.object.pk})
+        return reverse('resume', kwargs={'upk': self.request.user.pk, 'pk': self.object.pk})
 
     def has_permission(self):
         return super().has_permission() and self.get_object().author == self.request.user \

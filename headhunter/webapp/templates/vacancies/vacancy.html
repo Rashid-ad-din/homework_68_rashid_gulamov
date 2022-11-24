@@ -28,7 +28,7 @@
                                 <dd class="col-sm-9">{{ respond.resume.name }} {{ respond.resume.last_name }}</dd>
                                 <dt class="col-sm-3">Должность</dt>
                                 <dd class="col-sm-9"><a class="resum"
-                                                        href="{% url 'resume' respond.resume.pk %}">
+                                                        href="{% url 'resume' respond.resume.author.pk respond.resume.pk %}">
                                     {{ respond.resume.position }}</a>
                                 </dd>
                                 <dt class="col-sm-3">Открыть чат</dt>

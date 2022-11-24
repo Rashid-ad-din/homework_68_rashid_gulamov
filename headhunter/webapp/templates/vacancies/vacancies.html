@@ -21,7 +21,7 @@
                 {% for vacancy in vacancies_list %}
                     <tr>
                         <td class="col-3">
-                            <a class="list-unstyled text-dark" href="{% url 'vacancy' vacancy.pk %} ">
+                            <a class="list-unstyled text-dark" href="{% url 'vacancy' user.pk vacancy.pk %} ">
                                 {{ vacancy.position }}
                             </a>
                         </td>
@@ -57,7 +57,7 @@
                         </td>
 
                         <td class="col-1">
-                            <a href="{% url 'delete_vacancy' vacancy.pk %}" class="btn btn-danger">Удалить вакансию</a><br>
+                            <a href="{% url 'delete_vacancy' user.pk vacancy.pk %}" class="btn btn-danger">Удалить вакансию</a><br>
                         </td>
 
 

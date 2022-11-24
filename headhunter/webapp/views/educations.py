@@ -12,14 +12,14 @@ class CreateEducationView(PermissionRequiredMixin, CreateView):
     form_class = EducationForm
     permission_required = 'webapp.add_educations'
 
-    def post(self, request, pk, *args, **kwargs):
+    def post(self, request, upk, pk, *args, **kwargs):
         form = self.form_class(request.POST)
         resume = get_object_or_404(Resumes, pk=pk)
         if form.is_valid():
             education = form.save(commit=False)
             education.save()
             resume.education.add(education)
-            return redirect('resume', pk=pk)
+            return redirect('resume', upk=upk, pk=pk)
         context = {}
         context['form'] = form
         return self.render_to_response(context)
@@ -40,10 +40,10 @@ class EditEducationView(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.change_educations'
 
     def get_success_url(self):
-        return reverse('resume', kwargs={'pk': self.kwargs.get('upk')})
+        return reverse('resume', kwargs={'upk': self.request.user.pk, 'pk': self.kwargs.get('rpk')})
 
     def has_permission(self):
-        resume = get_object_or_404(Resumes, pk=self.kwargs.get('pk'))
+        resume = get_object_or_404(Resumes, pk=self.kwargs.get('rpk'))
         return (super().has_permission() or resume.author.username == str(self.request.user)
                 or self.request.user.is_superuser)
 
@@ -55,7 +55,7 @@ class DeleteEducationView(PermissionRequiredMixin, DeleteView):
     permission_required = 'webapp.delete_educations'
 
     def get(self, request, *args, **kwargs):
-        self.resume_pk = kwargs.get('upk')
+        self.resume_pk = kwargs.get('rpk')
         return super(DeleteEducationView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -63,9 +63,9 @@ class DeleteEducationView(PermissionRequiredMixin, DeleteView):
         return super(DeleteEducationView, self).get_context_data(**kwargs)
 
     def get_success_url(self):
-        return reverse('resume', kwargs={'pk': self.kwargs.get('upk')})
+        return reverse('resume', kwargs={'upk': self.request.user.pk, 'pk': self.kwargs.get('rpk')})
 
     def has_permission(self):
-        resume = get_object_or_404(Resumes, pk=self.kwargs.get('pk'))
+        resume = get_object_or_404(Resumes, pk=self.kwargs.get('rpk'))
         return (super().has_permission() or resume.author.username == str(self.request.user)
                 or self.request.user.is_superuser)

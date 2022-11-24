@@ -9,7 +9,7 @@
         {% csrf_token %}
         <input type="submit" value="Да" class="btn btn-danger mt-2 ml-3 mb-3">
         <a class="btn btn-primary mt-2 ml-3 mb-3"
-           href="{% url "respond" user.pk respond_message.respond.pk %}">нет</a>
+           href="{% url "respond" user.pk respond_message.respond.resume.pk respond_message.respond.pk %}">нет</a>
     </form>
     <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
 {% endblock %}

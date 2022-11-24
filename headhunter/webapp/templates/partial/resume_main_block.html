@@ -1,4 +1,5 @@
 <h4 class="fw-bold mb-1">Основной блок</h4>
+            <span class="fw-bold">Дата обновления: </span><span>{{ resume.updated_at }}<br></span>
             <span class="fw-bold">Автор: </span><span>{{ resume.first_name }} {{ resume.last_name }}<br></span>
             <span class="fw-bold">Название: </span><span>{{ resume.position }}<br></span>
             <span class="fw-bold">Категория: </span><span>{{ resume.get_category_display }}<br></span>
@@ -17,7 +18,7 @@
             <div class="d-flex">
                 {% if user_obj == user %}
                     <div>
-                        <a href="{% url 'edit_resume' resume.pk %}" class="btn btn-secondary">Редактировать основной
+                        <a href="{% url 'edit_resume' user.pk resume.pk %}" class="btn btn-secondary">Редактировать основной
                             блок
                             резюме</a><br>
                     </div>
