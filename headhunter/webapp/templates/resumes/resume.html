@@ -5,7 +5,7 @@
         <h2 class="fw-bold text-center">{{ resume.title }}</h2>
 
         {% if user_obj == user %}
-            <a href="{% url 'delete_resume' resume.pk %}" class="btn btn-danger" style="margin-left: 950px;">
+            <a href="{% url 'delete_resume' user.pk resume.pk %}" class="btn btn-danger" style="margin-left: 950px;">
                 Удалить резюме</a>
             <div>
         {% endif %}
@@ -18,7 +18,8 @@
 
     <div class="border-bottom">
         {% if user_obj == user %}
-            <a href="{% url 'create_experience' resume.pk %}" class="btn btn-secondary mt-2 mb-2 ms-3">Добавить блок
+            <a href="{% url 'create_experience' user.pk resume.pk %}" class="btn btn-secondary mt-2 mb-2 ms-3">Добавить
+                блок
                 опыта работы</a><br>
         {% endif %}
     </div>
@@ -29,7 +30,7 @@
 
     <div class="border-bottom">
         {% if user_obj == user %}
-            <a href="{% url 'create_education' resume.pk %}" class="btn btn-secondary mb-2 ms-3">Добавить блок
+            <a href="{% url 'create_education' user.pk resume.pk %}" class="btn btn-secondary mb-2 ms-3">Добавить блок
                 образование</a><br>
         {% endif %}
     </div>
@@ -58,12 +59,12 @@
                                     <dd class="col-sm-9">{{ respond.vacancy.author.username }}</dd>
                                     <dt class="col-sm-3">Должность</dt>
                                     <dd class="col-sm-9"><a class="resum"
-                                                            href="{% url 'vacancy' respond.vacancy.pk %}">
+                                                            href="{% url 'vacancy' user.pk respond.vacancy.pk %}">
                                         {{ respond.vacancy.position }}</a>
                                     </dd>
                                     <dt class="col-sm-3">Открыть чат</dt>
                                     <dd class="col-sm-9"><a class="list-unstyled text-dark"
-                                                            href="{% url 'respond' user.pk respond.pk %}"><i
+                                                            href="{% url 'respond' user.pk user.pk respond.pk %}"><i
                                             class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
                                 </dl>
                             </div>

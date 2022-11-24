@@ -13,8 +13,8 @@ class ListVacancyView(LoginRequiredMixin, ListView):
     template_name = 'vacancies/vacancies.html'
     model = Vacancies
 
-    def get(self, request, *args, **kwargs):
-        self.user_obj = get_object_or_404(Account, pk=kwargs.get('pk'))
+    def get(self, request, pk, *args, **kwargs):
+        self.user_obj = get_object_or_404(Account, pk=pk)
         vacancy_pk = request.GET.get('vacancy_pk')
         activate = request.GET.get('activate')
         if activate:
@@ -33,7 +33,7 @@ class ListVacancyView(LoginRequiredMixin, ListView):
         return super(ListVacancyView, self).get(request, *args, **kwargs)
 
     def get_queryset(self, **kwargs):
-        queryset = Vacancies.objects.filter(author_id=self.request.user.pk)
+        queryset = Vacancies.objects.filter(author_id=self.request.user.pk).order_by('-updated_at')
         return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -54,7 +54,7 @@ class CreateVacancyView(PermissionRequiredMixin, CreateView):
             resume = form.save(commit=False)
             resume.author = request.user
             resume.save()
-            return redirect('profile', pk=self.request.user.pk)
+            return redirect('vacancies', pk=self.request.user.pk)
         context = {}
         context['form'] = form
         return self.render_to_response(context)
@@ -74,11 +74,10 @@ class VacancyView(PermissionRequiredMixin, DetailView):
     permission_required = 'webapp.view_vacancies'
 
     def get(self, request, *args, **kwargs):
-        vac = get_object_or_404(Vacancies, pk=kwargs.get('pk'))
-        self.user_obj = vac.author
+        vacancy = get_object_or_404(Vacancies, pk=kwargs.get('pk'))
+        self.user_obj = vacancy.author
         refresh = request.GET.get('refresh')
         if refresh:
-            vacancy = get_object_or_404(Vacancies, pk=kwargs.get('pk'))
             vacancy.save()
         return super(VacancyView, self).get(request, *args, **kwargs)
 
@@ -87,6 +86,7 @@ class VacancyView(PermissionRequiredMixin, DetailView):
         kwargs['resumes'] = resumes
         responds = Respond.objects.all()
         kwargs['responds'] = responds
+        kwargs['user_obj'] = self.user_obj
         return super().get_context_data(**kwargs, form=VacancyForm())
 
 
@@ -97,7 +97,7 @@ class EditVacancyView(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.change_vacancies'
 
     def get_success_url(self):
-        return reverse('vacancy', kwargs={'pk': self.object.pk})
+        return reverse('vacancy', kwargs={'upk': self.request.user.pk, 'pk': self.object.pk})
 
     def has_permission(self):
         return super().has_permission() and self.get_object().author == self.request.user \

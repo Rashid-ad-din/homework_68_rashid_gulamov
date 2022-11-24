@@ -13,9 +13,9 @@
             {% endif %}
 
             {% if user_obj == user %}
-                <a href="{% url 'edit_education' resume.pk education.pk %}"
+                <a href="{% url 'edit_education' user.pk resume.pk education.pk %}"
                    class="btn btn-secondary mb-2 mt-2">Редактировать</a>
-                <a href="{% url 'delete_education' resume.pk education.pk %}"
+                <a href="{% url 'delete_education' user.pk resume.pk education.pk %}"
                    class="btn btn-danger mb-2 mt-2">Удалить</a><br>
             {% endif %}
         </div>

@@ -15,14 +15,15 @@ class AddRespondMessageView(CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         user_pk = kwargs.get('upk')
+        resume_pk = kwargs.get('rpk')
         respond_pk = kwargs.get('pk')
         if form.is_valid():
             respond_message = form.save(commit=False)
             respond_message.respond = get_object_or_404(Respond, pk=respond_pk)
             respond_message.author = get_object_or_404(Account, pk=user_pk)
             respond_message.save()
-            return redirect('respond', user_pk, respond_pk)
-        return redirect('respond', user_pk, respond_pk)
+            return redirect('respond', user_pk, resume_pk, respond_pk)
+        return redirect('respond', user_pk, resume_pk, respond_pk)
 
 
 class DeleteRespondMessageView(DeleteView):
@@ -31,4 +32,9 @@ class DeleteRespondMessageView(DeleteView):
     context_object_name = 'respond_message'
 
     def get_success_url(self):
-        return reverse('respond', kwargs={'upk': self.request.user.pk, 'pk': self.object.respond.pk})
+        return reverse('respond',
+                       kwargs={
+                           'upk': self.request.user.pk,
+                           'rpk': self.object.respond.resume.pk,
+                           'pk': self.object.respond.pk
+                       })
