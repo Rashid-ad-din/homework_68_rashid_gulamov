@@ -14,20 +14,22 @@ class ListVacancyView(LoginRequiredMixin, ListView):
     model = Vacancies
 
     def get(self, request, *args, **kwargs):
+        self.user_obj = get_object_or_404(Account, pk=kwargs.get('pk'))
         vacancy_pk = request.GET.get('vacancy_pk')
-
         activate = request.GET.get('activate')
         if activate:
             vacancy = get_object_or_404(Vacancies, pk=vacancy_pk)
             vacancy.is_hidden = 0
             vacancy.save()
-
         deactivate = request.GET.get('deactivate')
         if deactivate:
             vacancy = get_object_or_404(Vacancies, pk=vacancy_pk)
             vacancy.is_hidden = 1
             vacancy.save()
-        self.user_obj = get_object_or_404(Account, pk=kwargs.get('pk'))
+        refresh = request.GET.get('refresh')
+        if refresh:
+            vacancy = get_object_or_404(Vacancies, pk=vacancy_pk)
+            vacancy.save()
         return super(ListVacancyView, self).get(request, *args, **kwargs)
 
     def get_queryset(self, **kwargs):
@@ -64,6 +66,15 @@ class VacancyView(LoginRequiredMixin, DetailView):
     template_name = 'vacancies/vacancy.html'
     model = Vacancies
     context_object_name = 'vacancy'
+
+    def get(self, request, *args, **kwargs):
+        vac = get_object_or_404(Vacancies, pk=kwargs.get('pk'))
+        self.user_obj = vac.author
+        refresh = request.GET.get('refresh')
+        if refresh:
+            vacancy = get_object_or_404(Vacancies, pk=kwargs.get('pk'))
+            vacancy.save()
+        return super(VacancyView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         resumes = Resumes.objects.filter(author_id=self.request.user.pk, is_hidden="False")

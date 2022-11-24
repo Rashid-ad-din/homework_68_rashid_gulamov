@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if user_obj == user %}
+    {% if user_obj == user or user.usertype == 'company' %}
         <h2 class="fw-bold text-center">{{ resume.title }}</h2>
         <a href="{% url 'delete_resume' resume.pk %}" class="btn btn-danger" style="margin-left: 950px;">
             Удалить резюме</a>

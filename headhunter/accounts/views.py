@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
@@ -63,9 +63,7 @@ class ProfileView(LoginRequiredMixin, DetailView):
     template_name = 'profile.html'
     context_object_name = 'user_obj'
 
-
-#
-#     def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):
 #         posts = self.object.posts.order_by('-created_at')
 #         own_profile = self.request.user
 #         some_profile = kwargs.get('object')
@@ -74,8 +72,12 @@ class ProfileView(LoginRequiredMixin, DetailView):
 #         kwargs['some_subscribes'] = some_profile.subscriptions.count()
 #         kwargs['some_subscribers'] = some_profile.subscribers.count()
 #         kwargs['posts'] = posts
-#         kwargs['search_form'] = SearchForm()
-#         return super().get_context_data(**kwargs)
+        kwargs['form'] = UserChangeForm(instance=self.get_object())
+        return super().get_context_data(**kwargs)
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
+
 #
 #     def get(self, request, *args, **kwargs):
 #         subscribe_to = request.GET.get('subscribe_to')
@@ -90,7 +92,7 @@ class ProfileView(LoginRequiredMixin, DetailView):
 class UserChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserChangeForm
-    template_name = 'user_change.html'
+    template_name = 'profile.html'
     context_object_name = 'user_obj'
 
     def get_success_url(self):
