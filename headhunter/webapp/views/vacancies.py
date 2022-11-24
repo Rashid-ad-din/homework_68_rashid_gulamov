@@ -100,3 +100,15 @@ class DeleteVacancyView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('vacancies', kwargs={'pk': self.request.user.pk})
+
+
+# class SearchView(ListView):
+#     model = Vacancy
+#     template_name = 'vacancy/search_results.html'
+#
+#     def get_queryset(self):
+#         query = self.request.GET.get('search')
+#         object_list = Vacancy.objects.filter(
+#             Q(position__istartswith=query)
+#         ).order_by('-updated_at')
+#         return object_list

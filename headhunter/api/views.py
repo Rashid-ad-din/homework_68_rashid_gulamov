@@ -11,11 +11,8 @@ class AddResumeView(APIView):
         vacancy = get_object_or_404(Vacancies, pk=request.data.get('vacancy', False))
         resume = get_object_or_404(Resumes, pk=request.data.get('resume', False))
         for respond in Respond.objects.all():
-            print(respond.resume.pk)
-            # print(int(request.data['resume']))
             if respond.resume.pk == int(request.data.get('resume', False)) and \
                     respond.vacancy.pk == int(request.data.get('vacancy', False)):
-                print('hui')
                 return Response({'error': 'Вы уже откликнулись'}, status=400)
         Respond.objects.create(vacancy=vacancy, resume=resume)
         return Response({'answer': 'Отклик отправлен'})
