@@ -19,7 +19,7 @@
             {% endif %}
 
             {% if user_obj == user %}
-                <a href="#" class="btn btn-secondary mt-2">Редактировать</a>
+                <a href="{% url 'edit_experience' resume.pk experience.pk %}" class="btn btn-secondary mt-2">Редактировать</a>
                 <a href="{% url 'delete_experience' resume.pk experience.pk %}"
                    class="btn btn-danger mt-2">Удалить</a><br>
             {% endif %}

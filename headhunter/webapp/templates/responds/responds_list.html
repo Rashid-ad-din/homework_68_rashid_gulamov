@@ -10,7 +10,6 @@
                     <th scope="col">Резюме</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Открыть чат</th>
-                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,7 +29,9 @@
                             </a>
                         </td>
                         <td class="col-3">
-                                {{ respond.resume.first_name }} {{ respond.resume.last_name }}
+                            <a class="list-unstyled text-dark" href="{% url 'profile' respond.vacancy.author.pk %}">
+                                {{ respond.vacancy.author.username|capfirst }}
+                            </a>
                         </td>
                         <td class="col-3">
                             <a class="list-unstyled text-dark" href="#">
@@ -43,10 +44,6 @@
                 {% if respond.vacancy.author == request.user %}
                     <tr>
                         <td class="col-3">
-                            {{ respond.pk }}
-                        </td>
-
-                        <td class="col-3">
                             <a class="list-unstyled text-dark" href="{% url 'vacancy' respond.vacancy.pk %}">
                                 {{ respond.vacancy.position }}
                             </a>
@@ -57,7 +54,9 @@
                             </a>
                         </td>
                         <td class="col-3">
-                                {{ respond.resume.first_name }} {{ respond.resume.last_name }}
+                            <a class="list-unstyled text-dark" href="{% url 'profile' respond.resume.author.pk %}">
+                                {{ respond.resume.author.username|capfirst }}
+                            </a>
                         </td>
 
                         <td class="col-3">

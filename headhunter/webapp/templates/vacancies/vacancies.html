@@ -9,8 +9,9 @@
                 <thead>
                 <tr>
                     <th scope="col">Название позиции</th>
-                    <th scope="col">Статус</th>
-                    <th scope="col">Дата создания</th>
+                    <th scope="col">Дата обновления</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -25,35 +26,41 @@
                             </a>
                         </td>
 
-                        <td class="col-3">
-                            {% if vacancy.is_hidden %}
-                                Неактивен
-                            {% else %}
-                                Активен
-                            {% endif %}
-                        </td>
-
-                        {% if not vacancy.created_at %}
+                        {% if not vacancy.updated_at %}
                             <td class="col-3"> ---- / -- / --</td>
                         {% else %}
-                            <td class="col-3">{{ vacancy.created_at }}</td>
+                            <td class="col-3">{{ vacancy.updated_at }}</td>
                         {% endif %}
 
-                        <td class="col-3">
+                        <td class="col-2">
                             {% if user_obj == user %}
                                 <form action="" method="get">
                                     <input type="hidden" class="btn btn-primary" name="vacancy_pk"
                                            value="{{ vacancy.pk }}">
                                     {% if vacancy.is_hidden %}
                                         <input type="submit" class="btn btn-primary" name="activate"
-                                               value="Активировать">
+                                               value="Опубликовать">
                                     {% else %}
                                         <input type="submit" class="btn btn-primary" name="deactivate"
-                                               value="Деактивировать">
+                                               value="Снять с публикации">
                                     {% endif %}
                                 </form>
                             {% endif %}
                         </td>
+                        <td class="col-2">
+                            <form action="" method="get">
+                                <input type="hidden" name="vacancy_pk"
+                                       value="{{ vacancy.pk }}">
+                                <input type="submit" class="btn btn-primary mr-3" name="refresh"
+                                       value="Обновить">
+                            </form>
+                        </td>
+
+                        <td class="col-1">
+                            <a href="{% url 'delete_vacancy' vacancy.pk %}" class="btn btn-danger">Удалить вакансию</a><br>
+                        </td>
+
+
 
                     </tr>
                 {% endfor %}
