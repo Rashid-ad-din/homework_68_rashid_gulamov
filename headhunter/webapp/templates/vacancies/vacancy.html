@@ -3,32 +3,14 @@
 {% block content %}
     <h2 class="text-center">Просмотр вакансии</h2>
     <div>
-        <span class="fw-bold">Название позиции: </span><span>{{ vacancy.position }}<br></span>
-        <span class="fw-bold">Категория: </span><span>{{ vacancy.category }}<br></span>
-        <span class="fw-bold">Уровень дохода: </span><span>{{ vacancy.salary }} тг.<br></span>
-        <span class="fw-bold">Описание: </span><span>{{ vacancy.description }}<br></span>
-        <span class="fw-bold">Опыт работы: </span><span>{{ vacancy.min_experience }} - {{ vacancy.max_experience }} лет<br></span>
-        <span class="fw-bold">Дата обновления: </span><span>{{ vacancy.updated_at }}<br></span>
-        {{ vacancy.author.pk }}
-        {{ user.pk }}
-        {% if vacancy.author.pk == user.pk %}
-        <div class="border-bottom d-flex py-3">
-            <a href="{% url 'edit_vacancy' vacancy.pk %}" class="btn btn-secondary mr-3">Редактировать вакансию</a><br>
-            <form action="" method="get">
-                <input type="hidden" name="vacancy_pk"
-                       value="{{ vacancy.pk }}">
-                <input type="submit" class="btn btn-secondary mr-3" name="refresh"
-                       value="Обновить">
-            </form>
-            <a href="{% url 'delete_vacancy' vacancy.pk %}" class="btn btn-danger">Удалить вакансию</a><br>
-        </div>
-        {% endif %}
-
+        {% include 'partial/vacancy_detail.html' with update="1" %}
 
         {% if request.user.usertype == 'candidate' %}
             <div class="row">
                 <div class="col-2">
-                    <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Откликнуться</button>
+                    <button id="addBtn" type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Откликнуться
+                    </button>
                 </div>
                 <div id="place"></div>
             </div>
@@ -38,25 +20,30 @@
         <div>
             <h2>Резюме которые откликнулись</h2>
             {% for respond in responds %}
-            {% if respond.vacancy == vacancy %}
-                <div class="card" style="margin-bottom: 30px; width: 70%">
-                    <div class="card-body">
+                {% if respond.vacancy == vacancy %}
+                    <div class="card" style="margin-bottom: 30px; width: 70%">
+                        <div class="card-body">
                             <dl class="row" style="margin-bottom: 0px;">
                                 <dt class="col-sm-3">ФИО</dt>
                                 <dd class="col-sm-9">{{ respond.resume.name }} {{ respond.resume.last_name }}</dd>
                                 <dt class="col-sm-3">Должность</dt>
-                                <dd class="col-sm-9"><a class="resum" href="{% url 'resume' respond.resume.pk %}">{{ respond.resume.position }}</a></dd>
+                                <dd class="col-sm-9"><a class="resum"
+                                                        href="{% url 'resume' respond.resume.pk %}">
+                                    {{ respond.resume.position }}</a>
+                                </dd>
                                 <dt class="col-sm-3">Открыть чат</dt>
-                                <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
+                                <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i
+                                        class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
                             </dl>
                         </div>
-                </div>
-            {% endif %}
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
     {% endif %}
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

@@ -3,9 +3,10 @@ from django.urls import path
 from webapp.views.educations import CreateEducationView, EditEducationView, DeleteEducationView
 from webapp.views.experiences import CreateExperienceView, EditExperienceView, DeleteExperienceView
 from webapp.views.index import IndexView
+from webapp.views.respond_messages import AddRespondMessageView, DeleteRespondMessageView
 from webapp.views.resumes import CreateResumeView, ListResumesView, ResumeView, EditResumeView, DeleteResumeView
 from webapp.views.vacancies import CreateVacancyView, ListVacancyView, VacancyView, EditVacancyView, DeleteVacancyView
-from webapp.views.responds import RespondListView
+from webapp.views.responds import RespondListView, RespondView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
@@ -22,7 +23,15 @@ urlpatterns = [
     path('hh/vacancy/<int:pk>/', VacancyView.as_view(), name='vacancy'),
     path('hh/vacancy/<int:pk>/edit', EditVacancyView.as_view(), name='edit_vacancy'),
     path('hh/vacancy/<int:pk>/delete', DeleteVacancyView.as_view(), name='delete_vacancy'),
+
     path('hh/respond/<int:pk>/', RespondListView.as_view(), name='responds'),
+    path('hh/respond/<int:upk>/respond/<int:pk>/', RespondView.as_view(), name='respond'),
+    path('hh/respond/<int:upk>/respond/<int:pk>/add-message/',
+         AddRespondMessageView.as_view(),
+         name='add_respond_message'),
+    path('hh/respond/<int:upk>/respond-message/<int:pk>/delete/',
+         DeleteRespondMessageView.as_view(),
+         name='delete_respond_message'),
 
     path('hh/resume/<int:pk>/education/create/', CreateEducationView.as_view(), name='create_education'),
     path('hh/resume/<int:upk>/education/<int:pk>/edit/', EditEducationView.as_view(), name='edit_education'),

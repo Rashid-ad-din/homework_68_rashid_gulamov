@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Удаление сообщения {% endblock %}
+
+{% block content %}
+    <h1 class="text-center" style="color: red; font-size: 21px;">Вы точно хотите удалить сообщение?
+    </h1>
+    <form method="POST" action="" class="text-center">
+        {% csrf_token %}
+        <input type="submit" value="Да" class="btn btn-danger mt-2 ml-3 mb-3">
+        <a class="btn btn-primary mt-2 ml-3 mb-3"
+           href="{% url "respond" user.pk respond_message.respond.pk %}">нет</a>
+    </form>
+    <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
+{% endblock %}

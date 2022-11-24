@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-4">
+                <h3 class="fw-bold text-left">Резюме</h3>
+                {% include 'partial/resume_main_block.html' with resume=respond.resume %}
+                {% include 'partial/experience.html' with resume=respond.resume %}
+                {% include 'partial/education.html' with resume=respond.resume %}
+            </div>
+            <div class="col-4" style="background-color: silver">
+                <h3 class="fw-bold text-left">Чат</h3>
+                {% for message in respond.respond_message.all %}
+                    {% if  message.author.usertype == "company" %}
+                        <div class="mb-1 rounded container-fluid" style="background-color: papayawhip;">
+                            <div class="d-flex justify-content-between border-bottom">
+                                <p class="m-0"><span
+                                        class="fw-bold">{{ message.author.username }}: </span>{{ message.text }}
+                                </p>
+                                {% if user == message.author %}
+                                    <a href="{% url 'delete_respond_message' respond.pk message.pk %}" type="button"
+                                       class="btn btn-secondary p-0 mt-1 mb-1 text-center"
+                                       style="font-size: 14px; width: 18px; height: 21px;">x
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="mb-1 rounded container-fluid" style="background-color: paleturquoise;">
+                            <div class="d-flex border-bottom justify-content-between">
+                                <p class="m-0"><span
+                                        class="fw-bold">{{ message.author.username }}: </span>{{ message.text }}
+                                </p>
+                                {% if user == message.author %}
+                                    <a href="{% url 'delete_respond_message' respond.pk message.pk %}" type="button"
+                                       class="btn btn-secondary p-0 mt-1 mb-1 text-center"
+                                       style="font-size: 14px; width: 18px; height: 21px;">x
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <form action="{% url 'add_respond_message' user.pk respond.pk %}" method="post"
+                      style="margin-bottom: 30px;" class="pt-3">
+                    {% csrf_token %}
+                    <p style="height: 85px;" class="mb-0">
+                        {% for field in message_form %}
+                            <label class="align-top">{{ field.label }}</label>
+                            {{ field }}
+                        {% endfor %}
+                        <input type="submit" value="Отправить"
+                               class="border-0 bg-white text-info fw-bold rounded align-middle ps-2 pe-2"
+                               style="margin-left: 248px; margin-bottom: 100px;">
+                    </p>
+                </form>
+            </div>
+            <div class="col-4">
+                <h3 class="fw-bold text-left">Вакансия</h3>
+                {% include 'partial/vacancy_detail.html' with vacancy=respond.vacancy update='0' %}
+            </div>
+        </div>
+
+
+    {% endif %}
+{% endblock %}

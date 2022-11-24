@@ -24,20 +24,13 @@ class RespondMessage(models.Model):
         on_delete=models.CASCADE,
         related_name='respond_message'
     )
-    message = models.ForeignKey(
-        verbose_name='Сообщение',
-        to='webapp.Message',
-        on_delete=models.CASCADE,
-        related_name='message_text'
-    )
-
-
-class Message(models.Model):
     author = models.ForeignKey(
-        get_user_model(),
         verbose_name='Автор',
-        on_delete=models.CASCADE,
-        related_name='author'
+        to=get_user_model(),
+        related_name='messages',
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE
     )
     text = models.CharField(
         verbose_name='Текст сообщения',
@@ -47,5 +40,9 @@ class Message(models.Model):
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        blank=True
+        verbose_name='Запись создана'
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name='Запись изменена'
     )

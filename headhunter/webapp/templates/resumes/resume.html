@@ -62,7 +62,8 @@
                                         {{ respond.vacancy.position }}</a>
                                     </dd>
                                     <dt class="col-sm-3">Открыть чат</dt>
-                                    <dd class="col-sm-9"><a class="list-unstyled text-dark" href="#"><i
+                                    <dd class="col-sm-9"><a class="list-unstyled text-dark"
+                                                            href="{% url 'respond' user.pk respond.pk %}"><i
                                             class="bi bi-chat ml-4" style="font-size: 1.5rem;"></i></a></dd>
                                 </dl>
                             </div>
