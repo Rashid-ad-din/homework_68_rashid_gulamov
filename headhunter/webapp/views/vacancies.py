@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import DetailView, CreateView, ListView, UpdateView, DeleteView
@@ -42,10 +42,11 @@ class ListVacancyView(LoginRequiredMixin, ListView):
         return context
 
 
-class CreateVacancyView(LoginRequiredMixin, CreateView):
+class CreateVacancyView(PermissionRequiredMixin, CreateView):
     template_name = 'vacancies/create_vacancy.html'
     model = Vacancies
     form_class = VacancyForm
+    permission_required = 'webapp.add_vacancies'
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -61,11 +62,16 @@ class CreateVacancyView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('vacancies', kwargs={'pk': self.request.user.pk})
 
+    def has_permission(self):
+        print(super(CreateVacancyView, self).has_permission())
+        return super().has_permission() or self.request.user.is_superuser
 
-class VacancyView(LoginRequiredMixin, DetailView):
+
+class VacancyView(PermissionRequiredMixin, DetailView):
     template_name = 'vacancies/vacancy.html'
     model = Vacancies
     context_object_name = 'vacancy'
+    permission_required = 'webapp.view_vacancies'
 
     def get(self, request, *args, **kwargs):
         vac = get_object_or_404(Vacancies, pk=kwargs.get('pk'))
@@ -84,19 +90,40 @@ class VacancyView(LoginRequiredMixin, DetailView):
         return super().get_context_data(**kwargs, form=VacancyForm())
 
 
-class EditVacancyView(LoginRequiredMixin, UpdateView):
+class EditVacancyView(PermissionRequiredMixin, UpdateView):
     template_name = 'vacancies/edit_vacancy.html'
     model = Vacancies
     form_class = VacancyForm
+    permission_required = 'webapp.change_vacancies'
 
     def get_success_url(self):
         return reverse('vacancy', kwargs={'pk': self.object.pk})
 
+    def has_permission(self):
+        return super().has_permission() and self.get_object().author == self.request.user \
+               or self.request.user.is_superuser
 
-class DeleteVacancyView(LoginRequiredMixin, DeleteView):
+
+class DeleteVacancyView(PermissionRequiredMixin, DeleteView):
     template_name = 'vacancies/delete_vacancy.html'
     model = Vacancies
     context_object_name = 'vacancy'
+    permission_required = 'webapp.delete_vacancies'
 
     def get_success_url(self):
         return reverse('vacancies', kwargs={'pk': self.request.user.pk})
+
+    def has_permission(self):
+        return super().has_permission() and self.get_object().author == self.request.user \
+               or self.request.user.is_superuser
+
+# class SearchView(ListView):
+#     model = Vacancy
+#     template_name = 'vacancy/search_results.html'
+#
+#     def get_queryset(self):
+#         query = self.request.GET.get('search')
+#         object_list = Vacancy.objects.filter(
+#             Q(position__istartswith=query)
+#         ).order_by('-updated_at')
+#         return object_list
