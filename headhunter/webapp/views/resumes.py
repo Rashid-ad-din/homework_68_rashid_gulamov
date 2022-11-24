@@ -1,19 +1,17 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
-
 from accounts.models import Account
 from webapp.forms.resumes import ResumeForm
-from webapp.models import Respond
-from webapp.models import Resumes
-from webapp.models import Vacancies
+from webapp.models import Respond, Resumes, Vacancies
 
 
-class CreateResumeView(LoginRequiredMixin, CreateView):
+class CreateResumeView(PermissionRequiredMixin, CreateView):
     template_name = 'resumes/create_resume.html'
     model = Resumes
     form_class = ResumeForm
+    permission_required = 'webapp.add_resumes'
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -28,6 +26,9 @@ class CreateResumeView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.request.user.pk})
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user.is_superuser
 
 
 class ListResumesView(LoginRequiredMixin, ListView):
@@ -86,19 +87,29 @@ class ResumeView(LoginRequiredMixin, DetailView):
         return super().get_context_data(**kwargs, form=ResumeForm())
 
 
-class EditResumeView(LoginRequiredMixin, UpdateView):
+class EditResumeView(PermissionRequiredMixin, UpdateView):
     template_name = 'resumes/edit_resume.html'
     model = Resumes
     form_class = ResumeForm
+    permission_required = 'webapp.change_resumes'
 
     def get_success_url(self):
         return reverse('resume', kwargs={'pk': self.object.pk})
 
+    def has_permission(self):
+        return super().has_permission() and self.get_object().author == self.request.user \
+               or self.request.user.is_superuser
 
-class DeleteResumeView(DeleteView):
+
+class DeleteResumeView(PermissionRequiredMixin, DeleteView):
     template_name = 'resumes/delete_resume.html'
     model = Resumes
     context_object_name = 'resume'
+    permission_required = 'webapp.delete_resumes'
 
     def get_success_url(self):
         return reverse('resumes', kwargs={'pk': self.request.user.pk})
+
+    def has_permission(self):
+        return super().has_permission() and self.get_object().author == self.request.user \
+               or self.request.user.is_superuser
