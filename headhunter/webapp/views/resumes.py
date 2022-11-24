@@ -55,7 +55,7 @@ class ListResumesView(LoginRequiredMixin, ListView):
         return super(ListResumesView, self).get(request, *args, **kwargs)
 
     def get_queryset(self, **kwargs):
-        queryset = Resumes.objects.filter(author_id=self.request.user.pk)
+        queryset = Resumes.objects.filter(author_id=self.request.user.pk).order_by('-updated_at')
         return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
