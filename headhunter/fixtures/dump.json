@@ -1,0 +1,1862 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "company",
+    "permissions": [
+      [
+        "add_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "change_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "delete_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "view_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "add_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "change_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "delete_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "view_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "add_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "change_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "delete_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "view_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "view_resumes",
+        "webapp",
+        "resumes"
+      ],
+      [
+        "add_vacancies",
+        "webapp",
+        "vacancies"
+      ],
+      [
+        "change_vacancies",
+        "webapp",
+        "vacancies"
+      ],
+      [
+        "delete_vacancies",
+        "webapp",
+        "vacancies"
+      ],
+      [
+        "view_vacancies",
+        "webapp",
+        "vacancies"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "candidate",
+    "permissions": [
+      [
+        "add_educations",
+        "webapp",
+        "educations"
+      ],
+      [
+        "change_educations",
+        "webapp",
+        "educations"
+      ],
+      [
+        "delete_educations",
+        "webapp",
+        "educations"
+      ],
+      [
+        "view_educations",
+        "webapp",
+        "educations"
+      ],
+      [
+        "add_experiences",
+        "webapp",
+        "experiences"
+      ],
+      [
+        "change_experiences",
+        "webapp",
+        "experiences"
+      ],
+      [
+        "delete_experiences",
+        "webapp",
+        "experiences"
+      ],
+      [
+        "view_experiences",
+        "webapp",
+        "experiences"
+      ],
+      [
+        "add_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "change_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "delete_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "view_message",
+        "webapp",
+        "message"
+      ],
+      [
+        "add_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "change_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "delete_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "view_respond",
+        "webapp",
+        "respond"
+      ],
+      [
+        "add_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "change_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "delete_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "view_respondmessage",
+        "webapp",
+        "respondmessage"
+      ],
+      [
+        "add_resumes",
+        "webapp",
+        "resumes"
+      ],
+      [
+        "change_resumes",
+        "webapp",
+        "resumes"
+      ],
+      [
+        "delete_resumes",
+        "webapp",
+        "resumes"
+      ],
+      [
+        "view_resumes",
+        "webapp",
+        "resumes"
+      ],
+      [
+        "view_vacancies",
+        "webapp",
+        "vacancies"
+      ]
+    ]
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6eqz4k6i6z2sqwwx46vxi01nb62198me",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pCxQKEu3XsGMsOAVA0kpV0Z7y5NutDte-__t_C4rdlvLS5-ZnERZ3H6ZYThGcsu-IHlXmWoZV1mknsiD9vkrXJ8XY_27yBjy30dmZThBMwJB2Wn4KaRiWAAG5wekU00Fkl3HMhBd4PWAIlYOR4hic8XChA4kQ:1oxtqM:5YupGNDe-yqmwE4f9L0jQh55JcH0LWk3cacR6XcB_dM",
+    "expire_date": "2022-12-07T17:47:30.599Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "a0f8krp8yqhvggnrhxurvwmb62vinaa0",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWkK0ymDS_eegcx0WkFNSSisjHdXEha6_e-9_zIDb-s4bDUtw6TmbFpz-t2E4yOVHeidy222cS7rMondFXvQaq-zpuflcP8ORq7jt0YW6DzljC2xZxFwkhWxgcDaIxP1XSBw2XWCnhnBiyZogqMQqQHz_gDj-Ddx:1oxguQ:5_Gkbe6PkOdq5u-RYvACEYKPwU4iXOaf7E3W4_jbVyU",
+    "expire_date": "2022-12-07T03:58:50.920Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "foq9lnttlqbjlhl81jw2qzcvt72bnoqi",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAURP-FtSEFLgIu3fsN5F4eUjWQlHZl_Hdp0oUuZ86ZeTOP21r81tPi58guTAl2-i0JwzPVncQH1nvjodV1mYnvCj9o57cW0-t6uH8HBXsZ6wzGgrSTtC4SWWW0dgSTVAQ5C8gpCoE6KBgcQxZ4NtIlkSSNrK1jny_xejfm:1oyc4I:TEgqOVzzu_pnf6eE4y9w1vT8oP_6i1wAW3yHFb33Xf4",
+    "expire_date": "2022-12-09T17:00:50.857Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gkahxnbkk3izkpa20wamauc5ia5xpl7m",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEIw8ul-34DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiV2YFOz0O0ZMj9x2Qndst85Tb-syR74r_KCDT53y83q4fwcVR_3WaKQX0kSvjHfgrNLKgTBZFuUkgYJYzglAE6qkAY0p4EqRNloSmYRl7w_MiDck:1oxTH8:RqYOFSoUubKs5c7WDv282OObM45PXBU6jyLVuZiqNQc",
+    "expire_date": "2022-12-06T13:25:22.448Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "lgobdd4va2gympkphne46cp2xwewg4gt",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-ZW1T0nMGa9cfHEC2FCcV4u4QKQW0b2beiwXc1hq2kZcwJ3Zmkp1-N8L4yG0H6Y7t1nnsbV1m4rvCDzr4taf8vBzu30HFUb81YSYrvLBOFweqaEPosvQwWQciTmBQayERBIImaRMWg6SLFw5BKWLvD9FxN2Q:1ox9mt:O_usQh5OAGu7_mYXZmSU8KLsLhzS8KAQq1OC7kf-mQI",
+    "expire_date": "2022-12-05T16:36:51.586Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nswd9xlzgcaag4gxsuc2zhcpu58di504",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWkK0ymDS_eegcx0WkFNSSisjHdXEha6_e-9_zIDb-s4bDUtw6TmbFpz-t2E4yOVHeidy222cS7rMondFXvQaq-zpuflcP8ORq7jt0YW6DzljC2xZxFwkhWxgcDaIxP1XSBw2XWCnhnBiyZogqMQqQHz_gDj-Ddx:1oy5yk:9MeSqDiyz8mA0S9vaZbS06hZgV4fkAJhRUx5o_QXajY",
+    "expire_date": "2022-12-08T06:44:58.615Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qckpp46fv71ss4ne0rk26ech91qeluq9",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8piAu3fsNZGYAqRqalHZl_HfbpAvd3nPOfYuI61Lj2vMcxyQuQovT70bIz9x2kB7Y7pPkqS3zSHJX5EG7vE0pv66H-3dQsdetRiAGdCp7ZSwMlhmVCg5s0BSU98VTAVMMUmCyAyc8a8jgtiYYbUB8vtbsN1w:1owQcD:m-i9GY-EWRQnC6meDynLXtKXbSD-him9oVrsBiGTJJc",
+    "expire_date": "2022-12-03T16:22:49.301Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rcqq8fpa14zi38yeoahnxh1j1y3unng1",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pCxQKEu3XsGMsOAVA0kpV0Z7y5NutDte-__t_C4rdlvLS5-ZnERZ3H6ZYThGcsu-IHlXmWoZV1mknsiD9vkrXJ8XY_27yBjy30dmZThBMwJB2Wn4KaRiWAAG5wekU00Fkl3HMhBd4PWAIlYOR4hic8XChA4kQ:1oxqgB:nYqyaI1RW0feVKwxEUUMZZIlLHccu2YAn75TXykC5rA",
+    "expire_date": "2022-12-07T14:24:47.821Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "tknftvnnrkeg5oczrfh6wrtndtqw3fcj",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWkK0ymDS_eegcx0WkFNSSisjHdXEha6_e-9_zIDb-s4bDUtw6TmbFpz-t2E4yOVHeidy222cS7rMondFXvQaq-zpuflcP8ORq7jt0YW6DzljC2xZxFwkhWxgcDaIxP1XSBw2XWCnhnBiyZogqMQqQHz_gDj-Ddx:1oxLK3:v2v6k-fH4jDk_YhVLoSGXboKf1Jjqa6giFv8zchIWW4",
+    "expire_date": "2022-12-06T04:55:51.789Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "twcxarv0x6kqcd6hmnci3w0l0ta8evbk",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pCxQKEu3XsGMsOAVA0kpV0Z7y5NutDte-__t_C4rdlvLS5-ZnERZ3H6ZYThGcsu-IHlXmWoZV1mknsiD9vkrXJ8XY_27yBjy30dmZThBMwJB2Wn4KaRiWAAG5wekU00Fkl3HMhBd4PWAIlYOR4hic8XChA4kQ:1oxu7T:HzhFoAMv8vHSiCPLodpeQ1tbb2MsanCLFy8C20g-ceE",
+    "expire_date": "2022-12-07T18:05:11.041Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "usm8nqtugz5yh4dplbfesy5qer6jmbgr",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8piAu3fsNZGYAqRqalHZl_HfbpAvd3nPOfYuI61Lj2vMcxyQuQovT70bIz9x2kB7Y7pPkqS3zSHJX5EG7vE0pv66H-3dQsdetRiAGdCp7ZSwMlhmVCg5s0BSU98VTAVMMUmCyAyc8a8jgtiYYbUB8vtbsN1w:1ovI36:o67zBiK6NU6DpoBtQQZ8ioNtupJCQ3cj6cTubzGaIis",
+    "expire_date": "2022-11-30T13:01:52.420Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "w9q6ydmtkukx58ebqtszzfg2n0q85wja",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8piAu3fsNZGYAqRqalHZl_HfbpAvd3nPOfYuI61Lj2vMcxyQuQovT70bIz9x2kB7Y7pPkqS3zSHJX5EG7vE0pv66H-3dQsdetRiAGdCp7ZSwMlhmVCg5s0BSU98VTAVMMUmCyAyc8a8jgtiYYbUB8vtbsN1w:1ouskt:sKWAGhqLZ6uxqGGVXGcgOvdVZVRltCGQD-x59A4lfI4",
+    "expire_date": "2022-11-29T10:01:23.979Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zlndnux3xztfdeeaboh8qdbk5bdlgonc",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlkx_lPS5wzWrneNA8iR4qRC3B0ipYD2zcx7iQTbWtPWeUkTiYtQ4vS7IeQHtx3QHdptlnlu6zKh3BV50C7Hmfh5Pdy_gwq9fusYAxdtvAoaNVsCwwOiJe_AnjFjtM5TsKwx6FgUOAdmYJXJcLHBaPH-AOl2OBU:1owiwl:BW1os4Fla9ZiDFNNH619W81YtCEnCT7gduQFaysQ-PM",
+    "expire_date": "2022-12-04T11:57:15.898Z"
+  }
+},
+{
+  "model": "webapp.experiences",
+  "pk": 4,
+  "fields": {
+    "created_at": "2022-11-25T16:14:07.646Z",
+    "updated_at": "2022-11-25T16:14:07.646Z",
+    "name_of_company": "BatysEnergo",
+    "experience": "1.00",
+    "start_date": "2021-11-25",
+    "end_date": "2022-11-25",
+    "position": "Инженер",
+    "responsibilities": "выезд на замеры, исполнение проектов по газоснабжению ( низкое и средне давление ), составление аксонометрий",
+    "additional_info": ""
+  }
+},
+{
+  "model": "webapp.experiences",
+  "pk": 5,
+  "fields": {
+    "created_at": "2022-11-25T16:41:00.557Z",
+    "updated_at": "2022-11-25T16:41:00.557Z",
+    "name_of_company": "Devcool",
+    "experience": "0.50",
+    "start_date": "2022-05-25",
+    "end_date": "2022-11-25",
+    "position": "Стажер",
+    "responsibilities": "Финалист Школы программирования 21 в Москве\r\n- Собственный проект на Python с использованием Django\r\n- Волонтёрский проект на C# с использованием технологии ADO.NET",
+    "additional_info": "Я хочу работать в сфере программирования в надёжной компании, чтобы применить знания и опыт, полученный за время обучения и практики в программирование. Также освоить много нового, что, я уверен, поможет улучшить мои профессиональные навыки. Я твердо убеждён, что моя любовь к сотрудничеству, обучению и лидерству поможет мне набраться опыта из каждого проекта и принести пользу компании."
+  }
+},
+{
+  "model": "webapp.educations",
+  "pk": 4,
+  "fields": {
+    "created_at": "2022-11-25T16:20:26.255Z",
+    "updated_at": "2022-11-25T16:20:26.255Z",
+    "name": "КазНИТУ",
+    "start_date": "2018-09-01",
+    "end_date": "2022-07-05",
+    "speciality": "Автоматизация",
+    "additional_info": ""
+  }
+},
+{
+  "model": "webapp.educations",
+  "pk": 5,
+  "fields": {
+    "created_at": "2022-11-25T16:41:42.518Z",
+    "updated_at": "2022-11-25T16:41:42.518Z",
+    "name": "IITU",
+    "start_date": "2022-11-25",
+    "end_date": "2022-11-25",
+    "speciality": "IT",
+    "additional_info": ""
+  }
+},
+{
+  "model": "webapp.respond",
+  "pk": 369,
+  "fields": {
+    "resume": 16,
+    "vacancy": 16
+  }
+},
+{
+  "model": "webapp.respond",
+  "pk": 370,
+  "fields": {
+    "resume": 17,
+    "vacancy": 11
+  }
+},
+{
+  "model": "webapp.respond",
+  "pk": 371,
+  "fields": {
+    "resume": 18,
+    "vacancy": 14
+  }
+},
+{
+  "model": "webapp.respond",
+  "pk": 372,
+  "fields": {
+    "resume": 17,
+    "vacancy": 12
+  }
+},
+{
+  "model": "accounts.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$O2hCtV4MoBdRm0Nu5k6Ypc$B606dAk6n/CYK35kEhZxTG9kOzu2sS9d1lbLAaaN97c=",
+    "last_login": "2022-11-25T16:57:24.872Z",
+    "is_superuser": true,
+    "first_name": "ADILETa",
+    "last_name": "KURENGTAYEV",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-11-15T04:52:42Z",
+    "usertype": "company",
+    "username": "root",
+    "email": "kurentaev1@gmail.com",
+    "avatar": "",
+    "phone": "8708705498411",
+    "groups": [
+      [
+        "company"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$AXNkb9TfcBMGqoWkl9UqSr$mDw4eF0yBC02sl40p947DcCjCL/GKABLQjX5dRLvps8=",
+    "last_login": "2022-11-25T16:57:54.392Z",
+    "is_superuser": false,
+    "first_name": "Mr",
+    "last_name": "Developer",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-25T15:06:10.106Z",
+    "usertype": "company",
+    "username": "devtool",
+    "email": "devtool@gmail.com",
+    "avatar": "avatars/devtool_8GNXO9p.jpg",
+    "phone": "87087054984",
+    "groups": [
+      [
+        "company"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$QrCEtFiYj6eOwmJ2gSOOUT$N0VBe+6kfcTVHkS2qNkzcwP16AXEZnisvRuhii1eae8=",
+    "last_login": "2022-11-25T17:00:05.933Z",
+    "is_superuser": false,
+    "first_name": "Mr",
+    "last_name": "Doctor",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-25T15:53:15.373Z",
+    "usertype": "company",
+    "username": "medtool",
+    "email": "medtool@gmail.com",
+    "avatar": "avatars/med_TEoEAIS.jpeg",
+    "phone": "87087054984",
+    "groups": [
+      [
+        "company"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$O4DdrEAUoZHNJV4ZRwYNpT$mueh9BA+TgenCs03I+KVuSv5ZgoqR7kIumOnmRShWEY=",
+    "last_login": "2022-11-25T17:00:50.853Z",
+    "is_superuser": false,
+    "first_name": "Mr",
+    "last_name": "Engeneer",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-25T15:58:44.024Z",
+    "usertype": "company",
+    "username": "engtool",
+    "email": "engtool@gmail.com",
+    "avatar": "avatars/eng.jpg",
+    "phone": "87087054984",
+    "groups": [
+      [
+        "company"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$JNwSFMNa3OYd5V4TePbKRx$TNnotVfXsgFY/8wxSY82wmNU32BL43cetMvtCQEOe10=",
+    "last_login": "2022-11-25T16:05:06.113Z",
+    "is_superuser": false,
+    "first_name": "Ivan",
+    "last_name": "Ivanov",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-25T16:03:56.409Z",
+    "usertype": "candidate",
+    "username": "user",
+    "email": "user@gmail.com",
+    "avatar": "",
+    "phone": "87087054984",
+    "groups": [
+      [
+        "candidate"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$h7kJOQW5rwVKcbFEXP76VW$FLVapxI2WmvhasadJmBTnnxXxtl53sBwyGfQBEBO0O0=",
+    "last_login": "2022-11-25T16:38:09.982Z",
+    "is_superuser": false,
+    "first_name": "Oleg",
+    "last_name": "Olegov",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-11-25T16:38:09.751Z",
+    "usertype": "candidate",
+    "username": "user2",
+    "email": "oleg@gmail.com",
+    "avatar": "",
+    "phone": "87087054984",
+    "groups": [
+      [
+        "candidate"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "webapp.respondmessage",
+  "pk": 5,
+  "fields": {
+    "respond": 369,
+    "author": [
+      "user"
+    ],
+    "text": "Добрый день. Мне очень интересна ваша вакансия. Не могли бы вы подробнее рассказать о специфике работы.",
+    "created_at": "2022-11-25T16:31:37.534Z",
+    "updated_at": "2022-11-25T16:31:37.534Z"
+  }
+},
+{
+  "model": "webapp.respondmessage",
+  "pk": 6,
+  "fields": {
+    "respond": 370,
+    "author": [
+      "user2"
+    ],
+    "text": "Хочу работать у вас!!!",
+    "created_at": "2022-11-25T16:49:46.742Z",
+    "updated_at": "2022-11-25T16:49:46.742Z"
+  }
+},
+{
+  "model": "webapp.respondmessage",
+  "pk": 8,
+  "fields": {
+    "respond": 371,
+    "author": [
+      "user2"
+    ],
+    "text": "Возьмите меня пожалуйста на работу",
+    "created_at": "2022-11-25T16:56:53.900Z",
+    "updated_at": "2022-11-25T16:56:53.900Z"
+  }
+},
+{
+  "model": "webapp.respondmessage",
+  "pk": 9,
+  "fields": {
+    "respond": 370,
+    "author": [
+      "devtool"
+    ],
+    "text": "Мы с вами свяжемся",
+    "created_at": "2022-11-25T16:59:26.664Z",
+    "updated_at": "2022-11-25T16:59:26.664Z"
+  }
+},
+{
+  "model": "webapp.respondmessage",
+  "pk": 10,
+  "fields": {
+    "respond": 371,
+    "author": [
+      "medtool"
+    ],
+    "text": "нет",
+    "created_at": "2022-11-25T17:00:14.215Z",
+    "updated_at": "2022-11-25T17:00:14.215Z"
+  }
+},
+{
+  "model": "webapp.respondmessage",
+  "pk": 11,
+  "fields": {
+    "respond": 369,
+    "author": [
+      "engtool"
+    ],
+    "text": "С вами свяжутся в течении дня",
+    "created_at": "2022-11-25T17:01:10.435Z",
+    "updated_at": "2022-11-25T17:01:10.435Z"
+  }
+},
+{
+  "model": "webapp.vacancies",
+  "pk": 11,
+  "fields": {
+    "created_at": "2022-11-25T15:26:26.005Z",
+    "updated_at": "2022-11-25T15:36:48.157Z",
+    "author": [
+      "devtool"
+    ],
+    "position": "Тестировщик",
+    "category": "it",
+    "salary": 250000,
+    "description": "Devtool - международная IT - компания. Мы создаем инновационные продукты в сфере логистики. Используем современные технологии в разработке. Devtool используют 300+ компаний по всему СНГ и это только начало. Сейчас мы выходим на международный рынок и планируем стать одним из мировых лидеров среди решений по оптимизации логистики. Для этого мы собираем команду, способную по настоящему изменить рынок логистики.\r\nНас объединяет интерес к сложным задачам, амбициозные цели и командная работа..\r\n\r\nТебе предстоит:\r\n\r\nпостроение конвейеров для организации комплексного тестирования продукта\r\n\r\nиспользовать популярные продукты и решения на рынке тестирования\r\n\r\nпроводить регрессионное тестирование и анализ на выявление \"плавающих багов\";\r\n\r\nпроводить тестирование багов и контролировать выпуск мелких фиксов;\r\n\r\nсистематизировать задачи в бэклоге продукта по степени важности и срочности;\r\n\r\nпроводить анализ требований к приложению, оценку качества релизов;\r\n\r\nрасширять тестовую среду и улучшать процессы по поиску багов\r\n\r\nПоднимать и настраивать тестовые конфигурации;\r\n\r\nУчаствовать в формировании требований к разрабатываемым системам и компонентам;\r\n\r\nУчаствовать в планировании работы над релизами продуктов команды.\r\n\r\nЧто нужно знать и уметь:\r\n\r\nАналитическое мышление;\r\n\r\nЗнание нескольких языков программирования (javascript, python).\r\n\r\nОпыт работы с кубернетс, докер и конвейером CI/CD\r\n\r\nУверенно использовать системы контроля версий Git (github, gitlab)\r\n\r\nТеоретические знания о методах и способах проведения тестирования;\r\n\r\nОпыт работы в bug-tracking системах;\r\n\r\nЧитать и проводить код ревью по компонентам, восстанавливать логику работы;\r\n\r\nУмение читать логи приложений;\r\n\r\nСовместно с разработчиками проводить тестирование по выбранным кейсам\r\n\r\nБудет плюсом:\r\n\r\nОпыт работы по Scrum / Kanban;\r\n\r\nНаличие собственного портфолио готовых решений;\r\n\r\nСоставление технической документации;\r\n\r\nУмение работать с MongoDB Compass;\r\n\r\nЗнание основ программирования на Javascript.\r\n\r\nМы предлагаем:\r\n\r\nКрутую команду профессионалов, у которых всегда есть чему учиться;\r\n\r\nПросторный светлый офис с видом на горы в центре Алматы;\r\n\r\nПрограмма релокации для иногородних сотрудников;\r\n\r\nНеиссякаемый поток интересных задач;\r\n\r\nОтсутствие дресс-кода и бюрократии, свобода в реализации интересных задач;\r\n\r\nНовое оборудование, мощный компьютер;\r\n\r\nСнэки в офисе всегда;\r\n\r\nОплата онлайн курсов или конференций по разработке.",
+    "min_experience": 1,
+    "max_experience": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "webapp.vacancies",
+  "pk": 12,
+  "fields": {
+    "created_at": "2022-11-25T15:42:45.353Z",
+    "updated_at": "2022-11-25T15:42:45.353Z",
+    "author": [
+      "devtool"
+    ],
+    "position": "Team Lead Frontend-разработки",
+    "category": "it",
+    "salary": 1000000,
+    "description": "Devtool - международная IT - компания. Мы создаем инновационные продукты в сфере логистики. Используем современные технологии в разработке. Devtool используют 300+ компаний по всему СНГ и это только начало. Сейчас мы выходим на международный рынок и планируем стать одним из мировых лидеров среди решений по оптимизации логистики. Для этого мы собираем команду, способную по настоящему изменить рынок логистики.\r\nНас объединяет интерес к сложным задачам, амбициозные цели и командная работа.\r\n\r\nНаш стэк:\r\n\r\nJavaScript, Meteor;\r\nReact, Redux;\r\nGitlab;\r\nKubernetes, Docker;\r\nUbuntu.\r\nТебе предстоит:\r\n\r\nРаботать с командой Frontend-разработчиков: распределять задачи, мотивировать команду на достижение поставленных целей;\r\n\r\nПисать фронтенд на React в связке с Meteor;\r\n\r\nДорабатывать, оптимизировать и рефакторить имеющийся функционал;\r\n\r\nРазрабатывать новый функционал клиентской части;\r\n\r\nУчаствовать в проектировании системы и разработке API;\r\n\r\nРаботать над производительностью веб-приложения;\r\n\r\nВырабатывать технические решения, участвовать в проектировании веб-приложения;\r\n\r\nОптимизировать интерфейс под разные браузеры и дисплеи;\r\n\r\nПроектировать и разрабатывать новые приложения.\r\n\r\nБудет плюсом:\r\n\r\nДостижения в спортивном программировании;\r\nСоздание своих проектов.\r\nМы предлагаем:\r\n\r\nКрутую команду профессионалов, у которых всегда есть чему учиться;\r\n\r\nРаботу над очень интересным и сложным продуктом;\r\n\r\nРаботу над международным продуктом;\r\n\r\nПросторный светлый офис с видом на горы в центре Алматы;\r\n\r\nПрограмма релокации для иногородних сотрудников;\r\n\r\nНеиссякаемый поток интересных задач;\r\n\r\nОтсутствие дресс-кода и бюрократии, свобода в реализации интересных задач;\r\n\r\nСнэки в офисе всегда;\r\n\r\nОплата онлайн курсов или конференций.",
+    "min_experience": 3,
+    "max_experience": 6,
+    "is_hidden": false
+  }
+},
+{
+  "model": "webapp.vacancies",
+  "pk": 13,
+  "fields": {
+    "created_at": "2022-11-25T15:55:30.998Z",
+    "updated_at": "2022-11-25T15:55:30.998Z",
+    "author": [
+      "medtool"
+    ],
+    "position": "Фармацевт",
+    "category": "medicine",
+    "salary": 300000,
+    "description": "Ожидаем от Вас:\r\n\r\n• Желание обучаться и много зарабатывать; \r\n• Быть дисциплинированным;\r\n • Системность и внимательность в работе;\r\n • Клиентоориентированность;\r\n • Нацеленность на результат;\r\n • Грамотная речь (обязательно на казахском языке) и коммуникабельность;\r\n • Проведение переговоров с клиентами по телефону (горячие лиды);\r\n • Позитивность и активность;\r\n • Опыт работы в call-центре (будет преимуществом).\r\n\r\nЧто вам предоставляет наша компания:\r\n\r\n• Постоянное обучение за счет компании; \r\n• Лояльное руководство;\r\n• Молодой и дружный коллектив;\r\n • Дополнительные денежные призы; \r\n• Своевременная оплата труда; \r\n• Комфортабельный офис в центре города\r\n\r\nГрафик работы:\r\n\r\n• С 09:00 до 19:00 \r\n• 6-ти дневная рабочая неделя",
+    "min_experience": 1,
+    "max_experience": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "webapp.vacancies",
+  "pk": 14,
+  "fields": {
+    "created_at": "2022-11-25T15:56:25.014Z",
+    "updated_at": "2022-11-25T15:56:25.014Z",
+    "author": [
+      "medtool"
+    ],
+    "position": "Медсестра/медбрат",
+    "category": "medicine",
+    "salary": 150000,
+    "description": "Требуется дневная медсестра в частный медцентр Ultraline. Медцентр имеет 8 филиалов по городу. Есть собственная лаборатория и сети аптек.\r\n\r\nОбязанности:\r\n\r\nпроведение манипуляции в/в, в/м, забор крови\r\nконтроль записей пациентов филиала\r\nпомощь врачам-гинекологам и врачам УЗИ\r\nЗапись пациентов в СРМ системе\r\nПрием платежей, введение кассы\r\nТребования:\r\nпунктуальность\r\nаккуратность\r\nответственность\r\nвладение ПК и оргтехникой\r\nЗнание (понимание) СРМ системы\r\nГрамотная русская, казахская речь\r\nУсловия:\r\n6/1, выходной плавающий\r\nиспытательный срок 3 месяца - оплата 90 000 тенге до вычета налогов\r\nпосле 3х месяцев - оплата 120 000 тенге + бонусы\r\nс 6 месяца - оплата 150 000 тенге + бонусы\r\nоплата бонусов 1 раз в квартал\r\nТрудоустройство по ТК РК с 1го дня\r\nЕсли Вы получили приглашение, просим заранее ознакомиться медицинским центром в открытых источниках!",
+    "min_experience": 1,
+    "max_experience": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "webapp.vacancies",
+  "pk": 15,
+  "fields": {
+    "created_at": "2022-11-25T16:01:53.120Z",
+    "updated_at": "2022-11-25T16:04:49.459Z",
+    "author": [
+      "engtool"
+    ],
+    "position": "Главный специалист АСУТП отдела автоматики и связи / инженер проектировщик",
+    "category": "other",
+    "salary": 700000,
+    "description": "Обязанности:\r\nОрганизует проектирование по поручаемым ему объектам (распределяет работу между исполнителями, следит за ходом проектирования, контролирует сроки выполнения, разрешает возникающие вопросы, согласовывает принимаемые решения с главным инженером проекта, проверяет работы исполнителей, подписывает проверяемые материалы).\r\n\r\nГлавный специалист отдела должен знать:\r\n\r\nпрограммные продукты: AutoCAD, MS Office, и другие программные комплексы для проектирования и уметь ими пользоваться;\r\nтехнологию производства проектных работ, порядок разработки и утверждения планов производственно-хозяйственной деятельности;\r\nперспективы технического, экономического и социального развития, производственные мощности организации и кадровые ресурсы;\r\nпостановления, распоряжения, приказы, другие руководящие и нормативные материалы вышестоящих органов, касающиеся деятельности Товарищества; законодательные и нормативные правовые акты, руководящие материалы, регламентирующие процессы проектирования и строительства (СН РК, СНИП, ГОСТы и пр.);\r\nосновы организации труда при проектировании;\r\nстроительные нормы и правила; стандарты, технические условия и другие руководящие материалы по разработке и оформлению проектно-сметной документации;\r\nнаучно-технические достижения и передовой опыт по проектированию и строительству объектов строительства и промышленности РК, стран СНГ и зарубежья;\r\nправила и нормы безопасности и охраны труда, внутреннего трудового распорядка, производственной санитарии и противопожарной защиты, при обмерных работах, авторском надзоре и других работах.\r\nУсловия:\r\nРежим работы 5/2\r\n\r\nОфициальное трудоустройство, согласно Трудового законодательства РК",
+    "min_experience": 3,
+    "max_experience": 6,
+    "is_hidden": false
+  }
+},
+{
+  "model": "webapp.vacancies",
+  "pk": 16,
+  "fields": {
+    "created_at": "2022-11-25T16:02:56.092Z",
+    "updated_at": "2022-11-25T16:02:56.092Z",
+    "author": [
+      "engtool"
+    ],
+    "position": "Инженер-проектировщик",
+    "category": "other",
+    "salary": 400000,
+    "description": "Обязанности:\r\nВыполнение чертежей;\r\nРазработка проектной документации принципиальных схем, чертежей\r\nТребования:\r\nОбразование - высшее техническое;\r\nЗнание программ - AutoCaD, Знание нормативы;\r\nУмение читать чертежи, вносить изменения в проектную документацию согласно СНИП и ГОСТ\r\nОтветственность, умение работать в команде;\r\nИсполнение прочих поручений руководства в рамках данной профессии\r\nУсловия:\r\nОформление по трудовому кодексу РК;\r\nПенсионные и социальные отчисления\r\nСтабильная заработная плата\r\nГрафик работы 5/2- 8:00-17:00",
+    "min_experience": 1,
+    "max_experience": 3,
+    "is_hidden": false
+  }
+},
+{
+  "model": "webapp.resumes",
+  "pk": 16,
+  "fields": {
+    "created_at": "2022-11-25T16:11:17.150Z",
+    "updated_at": "2022-11-25T16:11:17.150Z",
+    "author": [
+      "user"
+    ],
+    "title": "Инженер",
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "position": "Инженер-проектировщик",
+    "category": "other",
+    "salary": 250000,
+    "phone_number": "87087054984",
+    "email": "ivanov@gmail.com",
+    "telegram": "http://ivanov.com",
+    "facebook": null,
+    "linkedin": null,
+    "about_worker": "Microsoft Word, Microsoft PowerPoint, Microsoft Office, Microsoft Excel, Corel Draw Suite, AutoCad, AutoCad 3D, Sketchup, Adobe Photoshop\r\n\r\nОтветственный, пунктуальный, целеустремленный, коммуникабельный (легко располагаю к себе собеседника) заинтересованный в быстроте и качестве проделанной работы!",
+    "is_hidden": false,
+    "experience": [
+      4
+    ],
+    "education": [
+      4
+    ]
+  }
+},
+{
+  "model": "webapp.resumes",
+  "pk": 17,
+  "fields": {
+    "created_at": "2022-11-25T16:39:01.892Z",
+    "updated_at": "2022-11-25T16:39:01.892Z",
+    "author": [
+      "user2"
+    ],
+    "title": "Junior developer",
+    "first_name": "Oleg",
+    "last_name": "Olegov",
+    "position": "Junior developer",
+    "category": "it",
+    "salary": 150000,
+    "phone_number": "87087054984",
+    "email": "oleg@gmail.com",
+    "telegram": "http://oleg.com",
+    "facebook": null,
+    "linkedin": null,
+    "about_worker": "",
+    "is_hidden": false,
+    "experience": [
+      5
+    ],
+    "education": [
+      5
+    ]
+  }
+},
+{
+  "model": "webapp.resumes",
+  "pk": 18,
+  "fields": {
+    "created_at": "2022-11-25T16:51:47.598Z",
+    "updated_at": "2022-11-25T16:51:47.598Z",
+    "author": [
+      "user2"
+    ],
+    "title": "Медбрат",
+    "first_name": "Олег",
+    "last_name": "Олегов",
+    "position": "Медбрат",
+    "category": "medicine",
+    "salary": 200000,
+    "phone_number": "87087054984",
+    "email": "oleg@gmail.com",
+    "telegram": "http://oleg.com",
+    "facebook": null,
+    "linkedin": null,
+    "about_worker": "",
+    "is_hidden": false,
+    "experience": [],
+    "education": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2022-11-19T16:24:41.396Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "vacancies"
+    ],
+    "object_id": "1",
+    "object_repr": "root",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2022-11-19T16:25:59.198Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "resumes"
+    ],
+    "object_id": "1",
+    "object_repr": "ADILET",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2022-11-19T16:26:09.535Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "vacancies"
+    ],
+    "object_id": "1",
+    "object_repr": "root",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u0435\\u0437\\u044e\\u043c\\u0435\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2022-11-21T09:29:03.798Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "1",
+    "object_repr": "root",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u043b\\u044c\\u0437\\u043e\\u0432\\u0430\\u0442\\u0435\\u043b\\u044c *\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2022-11-21T09:30:03.487Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "vacancies"
+    ],
+    "object_id": "1",
+    "object_repr": "PhD, доцент",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2022-11-21T11:00:13.647Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2022-11-21T11:00:16.604Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2022-11-21T11:02:25.546Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "company",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2022-11-21T11:02:46.403Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "applicant",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2022-11-21T11:04:05.732Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2022-11-21T11:04:11.015Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2022-11-21T11:04:15.028Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2022-11-21T11:04:18.258Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2022-11-24T16:07:31.988Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Компания",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2022-11-24T16:07:37.245Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "Кандидат",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2022-11-24T16:07:51.911Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "comapny",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2022-11-24T16:07:56.715Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "company",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2022-11-24T16:08:00.970Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "candidate",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2022-11-24T16:09:47.666Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "company",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2022-11-24T16:10:20.848Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "candidate",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2022-11-24T17:13:56.842Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "9",
+    "object_repr": "adlet256",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.307Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "24",
+    "object_repr": "adlet1998",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.312Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "23",
+    "object_repr": "root12345",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.315Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "22",
+    "object_repr": "adlet256256256",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.319Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "21",
+    "object_repr": "root78999",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.322Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "20",
+    "object_repr": "root963",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.324Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "19",
+    "object_repr": "root222222222",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.327Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "18",
+    "object_repr": "root09876",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.333Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "17",
+    "object_repr": "root65475",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.338Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "16",
+    "object_repr": "root1244545",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.340Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "15",
+    "object_repr": "root44444",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.343Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "14",
+    "object_repr": "root632",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.345Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "13",
+    "object_repr": "root789",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.347Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "12",
+    "object_repr": "root456",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.350Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "11",
+    "object_repr": "root321",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.352Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "10",
+    "object_repr": "root256",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.354Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "9",
+    "object_repr": "adlet256",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.356Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "8",
+    "object_repr": "adlet123",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.364Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "7",
+    "object_repr": "root111111",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.367Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "6",
+    "object_repr": "root111",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.369Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "5",
+    "object_repr": "root1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.372Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "4",
+    "object_repr": "adl",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.374Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "3",
+    "object_repr": "dev",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2022-11-24T17:50:11.376Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "2",
+    "object_repr": "adlet",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2022-11-25T13:11:52.907Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "1",
+    "object_repr": "root",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email *\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2022-11-25T14:57:12.996Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "28",
+    "object_repr": "root3",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2022-11-25T14:57:12.999Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "27",
+    "object_repr": "root789",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2022-11-25T14:57:13.002Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "26",
+    "object_repr": "adlet",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2022-11-25T14:57:13.006Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "25",
+    "object_repr": "a",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2022-11-25T14:57:21.576Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "vacancies"
+    ],
+    "object_id": "3",
+    "object_repr": "inter",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2022-11-25T14:57:21.579Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "vacancies"
+    ],
+    "object_id": "2",
+    "object_repr": "КИП",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2022-11-25T14:57:27.573Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "educations"
+    ],
+    "object_id": "3",
+    "object_repr": "1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2022-11-25T14:57:27.578Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "educations"
+    ],
+    "object_id": "2",
+    "object_repr": "1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2022-11-25T14:57:27.580Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "educations"
+    ],
+    "object_id": "1",
+    "object_repr": "ADILET KURENGTAYEV",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2022-11-25T14:57:35.879Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "experiences"
+    ],
+    "object_id": "3",
+    "object_repr": "1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2022-11-25T14:57:35.887Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "webapp",
+      "experiences"
+    ],
+    "object_id": "2",
+    "object_repr": "1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2022-11-25T14:58:09.158Z",
+    "user": [
+      "root"
+    ],
+    "content_type": [
+      "accounts",
+      "account"
+    ],
+    "object_id": "1",
+    "object_repr": "root",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+}
+]
