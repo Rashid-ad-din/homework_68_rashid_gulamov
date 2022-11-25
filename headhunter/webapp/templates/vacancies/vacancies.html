@@ -4,7 +4,12 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="d-flex flex-row flex-wrap">
+        {% if vacancies_list|length == 0 %}
+            <h5 class="card-title" style="margin-bottom: 550px; text-align: center; width: 100%;">
+                Нет вакансии для отображения
+            </h5>
+        {% else %}
+        <div class="d-flex flex-row flex-wrap" style="margin-bottom: 380px;">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -16,8 +21,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{ vacancy_list.all }}
-
                 {% for vacancy in vacancies_list %}
                     <tr>
                         <td class="col-3">
@@ -25,13 +28,11 @@
                                 {{ vacancy.position }}
                             </a>
                         </td>
-
                         {% if not vacancy.updated_at %}
                             <td class="col-3"> ---- / -- / --</td>
                         {% else %}
                             <td class="col-3">{{ vacancy.updated_at }}</td>
                         {% endif %}
-
                         <td class="col-2">
                             {% if user_obj == user %}
                                 <form action="" method="get">
@@ -55,18 +56,15 @@
                                        value="Обновить">
                             </form>
                         </td>
-
                         <td class="col-1">
                             <a href="{% url 'delete_vacancy' user.pk vacancy.pk %}" class="btn btn-danger">Удалить вакансию</a><br>
                         </td>
-
-
-
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
+        {% endif %}
     {% endif %}
 {% endblock %}
 

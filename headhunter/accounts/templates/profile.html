@@ -10,7 +10,6 @@
 {% block content %}
     <div class="ps-3">
         <div class="d-flex">
-
             <div>
                 {% if user.avatar %}
                     <div>
@@ -19,7 +18,7 @@
                     </div>
                 {% else %}
                     <div>
-                        <img src="{% static 'profile/empty.png' %}" alt="" style="height: 150px; width: 150px;"
+                        <img src="{% static '../uploads/logo.png' %}" alt="" style="height: 150px; width: 150px;"
                              class="me-3 rounded-circle">
                     </div>
                 {% endif %}
@@ -39,7 +38,7 @@
                     {% endif %}
                 </div>
 
-                <div>
+                <div style="margin-bottom: 410px;">
                     <p class="p-0 m-0 fw-bold">Категория: {{ user_obj.get_usertype_display }}</p>
                     <p class="p-0 m-0 fw-bold">Логин: {{ user_obj.username }}</p>
                     <p class="p-0 m-0 fw-bold">Email: {{ user_obj.email }}</p>
@@ -62,10 +61,48 @@
                         {% csrf_token %}
                         {% include 'partial/form.html' with form=form fields_only=True %}
                         <br>
-                        <input type="submit" class="btn btn-primary" value="Сохранить">
+                        <div id="place"></div>
+                        <input type="submit" class="btn btn-primary" value="Сохранить" onclick="editProfile(event)">
+                        <input id="{{ vacancy.pk }}" data-bs-dismiss="modal" type="submit"
+                                        data-name="{{ vacancy.pk }}" value="Закрыть"
+                                        class="btn btn-primary"></input>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+<script>
+    function successResult(data) {
+      $('#place').html(`<p style="color: limegreen">${data.answer}`)
+    };
+
+    function errorResult(data) {
+        text = JSON.parse(data.responseText);
+        const answer = `<span style="color:red">${text.error}</span>`;
+        $('#place').html(answer);
+    };
+    function editProfile(event) {
+        event.preventDefault()
+        let answer = {
+            username: document.getElementById('id_username').value,
+            name: document.getElementById('id_first_name').value,
+            lastname: document.getElementById('id_last_name').value,
+            email: document.getElementById('id_email').value,
+            phone: document.getElementById('id_phone').value,
+            avatar: document.getElementById('id_avatar').value.replace('C:\\fakepath\\', 'avatars/'),
+        }
+        console.log(answer)
+        var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+        $.ajax({
+            url: `http://localhost:8000/api/edit_account/`,
+            method: 'POST',
+            headers: {"X-CSRFToken": $crf_token},
+            data: JSON.stringify(answer),
+            dataType: "json",
+            contentType: "application/json",
+            success: successResult,
+            error: errorResult
+        })
+    }
+</script>
 {% endblock %}

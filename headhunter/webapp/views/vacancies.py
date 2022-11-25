@@ -63,7 +63,6 @@ class CreateVacancyView(PermissionRequiredMixin, CreateView):
         return reverse('vacancies', kwargs={'pk': self.request.user.pk})
 
     def has_permission(self):
-        print(super(CreateVacancyView, self).has_permission())
         return super().has_permission() or self.request.user.is_superuser
 
 

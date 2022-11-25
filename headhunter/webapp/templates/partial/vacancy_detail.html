@@ -1,10 +1,3 @@
-<span class="fw-bold">Название позиции: </span><span>{{ vacancy.position }}<br></span>
-<span class="fw-bold">Категория: </span><span>{{ vacancy.category }}<br></span>
-<span class="fw-bold">Уровень дохода: </span><span>{{ vacancy.salary }} тг.<br></span>
-<span class="fw-bold">Описание: </span><span>{{ vacancy.description }}<br></span>
-<span class="fw-bold">Опыт работы: </span><span>{{ vacancy.min_experience }} - {{ vacancy.max_experience }}
-        лет<br></span>
-<span class="fw-bold">Дата обновления: </span><span>{{ vacancy.updated_at }}<br></span>
 {% if vacancy.author.pk == user.pk and update == "1" %}
     <div class="border-bottom d-flex py-3">
         <a href="{% url 'edit_vacancy' user.pk vacancy.pk %}" class="btn btn-secondary mr-3">Редактировать
@@ -18,3 +11,10 @@
         <a href="{% url 'delete_vacancy' user.pk vacancy.pk %}" class="btn btn-danger">Удалить вакансию</a><br>
     </div>
 {% endif %}
+<span class="fw-bold">Название позиции: </span><span>{{ vacancy.position }}<br></span>
+<span class="fw-bold">Категория: </span><span>{{ vacancy.get_category_display }}<br></span>
+<span class="fw-bold">Уровень дохода: </span><span>{{ vacancy.salary }} тг.<br></span>
+<span class="fw-bold">Описание: </span><span>{{ vacancy.description|linebreaks }}<br></span>
+<span class="fw-bold">Опыт работы: </span><span>{{ vacancy.min_experience }} - {{ vacancy.max_experience }}
+        лет<br></span>
+<span class="fw-bold">Дата обновления: </span><span>{{ vacancy.updated_at }}<br></span>

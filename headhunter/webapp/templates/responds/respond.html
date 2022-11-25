@@ -21,7 +21,7 @@
                                 {% if user == message.author %}
                                     <a href="{% url 'delete_respond_message' user.pk respond.pk message.pk %}" type="button"
                                        class="btn btn-secondary p-0 mt-1 mb-1 text-center"
-                                       style="font-size: 14px; width: 18px; height: 21px;">x
+                                       style="font-size: 14px; width: 30px; height: 21px;">x
                                     </a>
                                 {% endif %}
                             </div>
@@ -35,7 +35,7 @@
                                 {% if user == message.author %}
                                     <a href="{% url 'delete_respond_message' user.pk respond.pk message.pk %}" type="button"
                                        class="btn btn-secondary p-0 mt-1 mb-1 text-center"
-                                       style="font-size: 14px; width: 18px; height: 21px;">x
+                                       style="font-size: 14px; width: 30px; height: 21px;">x
                                     </a>
                                 {% endif %}
                             </div>
@@ -52,7 +52,7 @@
                         {% endfor %}
                         <input type="submit" value="Отправить"
                                class="border-0 bg-white text-info fw-bold rounded align-middle ps-2 pe-2"
-                               style="margin-left: 248px; margin-bottom: 100px;">
+                               style="margin-left: 248px; margin-bottom: 100px; margin-top: 10px;">
                     </p>
                 </form>
             </div>

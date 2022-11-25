@@ -49,7 +49,7 @@ class EditExperienceView(PermissionRequiredMixin, UpdateView):
 
 
 class DeleteExperienceView(PermissionRequiredMixin, DeleteView):
-    template_name = 'educations/delete_education.html'
+    template_name = 'experiences/delete_experience.html'
     model = Experiences
     context_object_name = 'experience'
     permission_required = 'webapp.delete_experiences'

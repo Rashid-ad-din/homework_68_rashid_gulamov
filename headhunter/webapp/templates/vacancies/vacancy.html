@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2 class="text-center">Просмотр вакансии</h2>
-    <div>
+    <div style="margin-bottom: 20px;">
         {% include 'partial/vacancy_detail.html' with update="1" %}
 
         {% if request.user.usertype == 'candidate' %}
@@ -18,7 +18,10 @@
     </div>
     {% if request.user.pk == vacancy.author.pk %}
         <div>
+            {% if responds|length == 0 %}
+            {% else %}
             <h2>Резюме которые откликнулись</h2>
+            {% endif %}
             {% for respond in responds %}
                 {% if respond.vacancy == vacancy %}
                     <div class="card" style="margin-bottom: 30px; width: 70%">

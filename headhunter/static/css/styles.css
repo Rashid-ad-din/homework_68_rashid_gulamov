@@ -34,7 +34,7 @@ body {
 }
 
 .container {
-    height: 80px;
+    height: 70px;
 }
 
 img {
@@ -115,3 +115,10 @@ img {
     border: solid 1px gray;
 }
 
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    vertical-align: baseline;
+}
+
+.table td, .table th {
+    vertical-align: baseline;
+}

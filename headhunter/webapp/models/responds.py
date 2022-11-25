@@ -16,6 +16,13 @@ class Respond(models.Model):
         related_name='respond_vacancy'
     )
 
+    def __str__(self):
+        return f"{self.resume} {self.vacancy}"
+
+    class Meta:
+        verbose_name = "Отклик"
+        verbose_name_plural = "Отклики"
+
 
 class RespondMessage(models.Model):
     respond = models.ForeignKey(

@@ -2,22 +2,24 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="d-flex flex-row flex-wrap">
+        <div class="d-flex flex-row flex-wrap" style="margin-bottom: 460px;">
             <table class="table table-striped">
-
+                <thead>
+                <tr>
+                    <th scope="col">Вакансия</th>
+                    <th scope="col">Резюме</th>
+                    {% if request.user.usertype == 'candidate' %}
+                    <th scope="col">Работодатель</th>
+                    {% else %}
+                    <th scope="col">Кандидат</th>
+                    {% endif %}
+                    <th scope="col">Открыть чат</th>
+                </tr>
+                </thead>
                 {% for respond in responds %}
                     {% if request.user.usertype == 'candidate' %}
                         {% if respond.resume.author == request.user %}
-                            <thead>
-                            <tr>
-                                <th scope="col">Вакансия</th>
-                                <th scope="col">Резюме</th>
-                                <th scope="col">Работодатель</th>
-                                <th scope="col">Открыть чат</th>
-                            </tr>
-                            </thead>
                             <tbody>
-
                             <tr>
                                 <td class="col-3">
                                     <a class="list-unstyled text-dark" href="{% url 'vacancy' user.pk respond.vacancy.pk %}">
@@ -45,14 +47,6 @@
                         {% endif %}
                     {% else %}
                     {% if respond.vacancy.author == request.user %}
-                        <thead>
-                        <tr>
-                            <th scope="col">Вакансия</th>
-                            <th scope="col">Резюме</th>
-                            <th scope="col">Кандидат</th>
-                            <th scope="col">Открыть чат</th>
-                        </tr>
-                        </thead>
                         <tbody>
 
                         <tr>

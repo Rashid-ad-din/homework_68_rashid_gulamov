@@ -6,6 +6,11 @@
     {% if user.is_authenticated %}
         <div class="d-flex flex-row flex-wrap">
             <table class="table table-striped">
+                {% if resumes_list|length == 0 %}
+                    <h5 class="card-title" style="margin-bottom:530px; text-align: center; width: 100%;">
+                        Нет резюме для отображения
+                    </h5>
+                {% else %}
                 <thead>
                 <tr>
                     <th scope="col">ФИО</th>
@@ -15,8 +20,8 @@
                     <th scope="col"></th>
                 </tr>
                 </thead>
+                {% endif %}
                 <tbody>
-
                 {% for resume in resumes_list %}
                     <tr>
                         <td class="col-3">
