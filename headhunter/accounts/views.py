@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
+from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
 from accounts.forms import LoginForm, CustomUserCreationForm, UserChangeForm, PasswordChangeForm
 
 
@@ -64,31 +64,13 @@ class ProfileView(LoginRequiredMixin, DetailView):
     context_object_name = 'user_obj'
 
     def get_context_data(self, **kwargs):
-#         posts = self.object.posts.order_by('-created_at')
-#         own_profile = self.request.user
-#         some_profile = kwargs.get('object')
-#         kwargs['own_subscribes'] = own_profile.subscriptions.count()
-#         kwargs['own_subscribers'] = own_profile.subscribers.count()
-#         kwargs['some_subscribes'] = some_profile.subscriptions.count()
-#         kwargs['some_subscribers'] = some_profile.subscribers.count()
-#         kwargs['posts'] = posts
         kwargs['form'] = UserChangeForm(instance=self.get_object())
         return super().get_context_data(**kwargs)
 
     def get_object(self, queryset=None):
         return get_object_or_404(get_user_model(), pk=self.kwargs.get('pk'))
 
-#
-#     def get(self, request, *args, **kwargs):
-#         subscribe_to = request.GET.get('subscribe_to')
-#         if subscribe_to:
-#             request.user.subscriptions.add(subscribe_to)
-#         subscribe_of = request.GET.get('subscribe_of')
-#         if subscribe_of:
-#             request.user.subscriptions.remove(subscribe_of)
-#         return super().get(request, *args, **kwargs)
-#
-#
+
 class UserChangeView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = UserChangeForm
@@ -105,43 +87,6 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
         user = form.save()
         update_session_auth_hash(self.request, user)
         return HttpResponseRedirect(self.get_success_url())
-
-#
-#
-# class ProfilesView(ListView):
-#     template_name = 'profiles.html'
-#     model = get_user_model()
-#     context_object_name = 'profiles'
-#     queryset = Account.objects.all()
-#
-#     def get(self, request, *args, **kwargs):
-#         self.form = self.get_search_form()
-#         self.search_value = self.get_search_value()
-#         return super().get(request, *args, **kwargs)
-#
-#     def get_search_form(self):
-#         return SearchForm(self.request.GET)
-#
-#     def get_search_value(self):
-#         if self.form.is_valid():
-#             return self.form.cleaned_data.get('search')
-#         return None
-#
-#     def get_queryset(self):
-#         queryset = super().get_queryset().all()
-#         print(queryset)
-#         if self.search_value:
-#             query = Q(email__icontains=self.search_value) | Q(login__icontains=self.search_value) | Q(
-#                 first_name__icontains=self.search_value)
-#             queryset = queryset.filter(query)
-#         return queryset
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(object_list=object_list, **kwargs)
-#         context['form'] = self.form
-#         if self.search_value:
-#             context['query'] = urlencode({'search': self.search_value})
-#         return context
 
 
 class PasswordChangeView(LoginRequiredMixin, UpdateView):
@@ -160,4 +105,3 @@ class PasswordChangeView(LoginRequiredMixin, UpdateView):
         user = form.save()
         update_session_auth_hash(self.request, user)
         return HttpResponseRedirect(self.get_success_url())
-

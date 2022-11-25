@@ -1,8 +1,6 @@
 from urllib.parse import urlencode
-
 from django.db.models import Q
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import ListView
 from webapp.models import Resumes, Vacancies
 from webapp.forms.search import SearchForm
 
@@ -50,12 +48,3 @@ class IndexView(ListView):
         if self.search_value:
             context['query'] = urlencode({'search': self.search_value})
         return context
-
-
-# class IndexView(ListView):
-#     template_name = 'resumes/resumes.html'
-#     model = Resumes
-#
-#     def get_queryset(self):
-#         queryset = Resumes.objects.filter(is_hidden=False)
-#         return queryset

@@ -16,4 +16,4 @@ class AccountAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Account)
+admin.site.register(Account, AccountAdmin)
