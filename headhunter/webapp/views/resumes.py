@@ -19,13 +19,13 @@ class CreateResumeView(PermissionRequiredMixin, CreateView):
             resume = form.save(commit=False)
             resume.author = request.user
             resume.save()
-            return redirect('profile', pk=self.request.user.pk)
+            return redirect('resumes', pk=self.request.user.pk)
         context = {}
         context['form'] = form
         return self.render_to_response(context)
 
     def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.request.user.pk})
+        return reverse('resumes', kwargs={'pk': self.request.user.pk})
 
     def has_permission(self):
         return super().has_permission() or self.request.user.is_superuser

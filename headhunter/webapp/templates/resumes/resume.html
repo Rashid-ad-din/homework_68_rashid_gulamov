@@ -49,6 +49,8 @@
 
         {% if request.user.pk == resume.author.pk %}
             <div>
+                {% if responds|length == 0 %}
+                {% else %}
                 <h2>Отклики резюме</h2>
                 {% for respond in responds %}
                     {% if respond.resume == resume %}
@@ -71,6 +73,7 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+                {% endif %}
             </div>
         {% endif %}
 

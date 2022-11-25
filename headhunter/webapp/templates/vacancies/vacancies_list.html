@@ -2,80 +2,89 @@
 
 
 {% block menu %}
+    {% if user.is_authenticated %}
     <li class="nav-item">
-        <a class="nav-link text-warning text-light pt-3" data-bs-toggle="collapse" href="#collapseExample" role="button"
-           aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-search"></i>Поиск</a>
+        <a class="nav-link text-warning text-light pt-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-search"></i>Поиск</a>
     </li>
-
+    {% endif %}
 {% endblock %}
 {% block search %}
-    <div class="collapse" id="collapseExample" style="margin-top: 80px; background: black;">
-        {% if request.user.usertype == 'candidate' %}
-            <div class="col d-flex justify-content-center pt-2 search-list">
-                {% include 'partial/search.html' %}
-            </div>
-        {% endif %}
-
-        <div class="col d-flex justify-content-center pt-2 search-list" style="padding-bottom: 20px;">
-            <li class="d-flex">
-                <form action="" method="get">
-                    <input type="submit" class="btn btn-secondary" name="category" value="other">
-                    <input type="submit" class="btn btn-secondary" name="category" value="medicine">
-                    <input type="submit" class="btn btn-secondary" name="category" value="it">
-                    <input type="submit" class="btn btn-secondary" name="category" value="marketing">
-                    <input type="submit" class="btn btn-secondary" name="category" value="science">
-                </form>
-            </li>
-        </div>
-
+<div class="collapse" id="collapseExample" style="margin-top: 67px; background: black;">
+  {% if request.user.usertype == 'candidate' %}
+    <div class="col d-flex justify-content-center pt-2 search-list">
+      {% include 'partial/search.html' %}
     </div>
+    {% endif %}
+
+      <div class="col d-flex justify-content-center pt-2 search-list" style="padding-bottom: 20px;">
+          <li class="d-flex">
+            <form action="" method="get">
+                <input type="submit" class="btn btn-secondary" name="category" value="other">
+                <input type="submit" class="btn btn-secondary" name="category" value="medicine">
+                <input type="submit" class="btn btn-secondary" name="category" value="it">
+                <input type="submit" class="btn btn-secondary" name="category" value="marketing">
+                <input type="submit" class="btn btn-secondary" name="category" value="science">
+            </form>
+        </li>
+      </div>
+
+</div>
 {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <div class="col-10">
-            {% if request.user.usertype == 'company' %}
-                {% for resume in resumes %}
-                    {% if resume.is_hidden == False %}
-                        <div class="card" style="width: 100%; margin: 5px">
-                            <div class="card-body">
-                                <a href="{% url 'resume' user.pk resume.pk %}" style="text-decoration: none">
-                                    <h5 class="card-title">{{ resume.position }}</h5>
-                                </a>
-                                <p class="card-text">{{ resume.name|capfirst }} {{ resume.last_name|capfirst }}</p>
-                                <p class="card-text">{{ resume.category }}</p>
-                                <p class="card-text">{{ resume.experience.all.last }}</p>
-                                <p class="card-text" style="font-size: 12px; color: gray;">{{ resume.updated_at }}</p>
-                            </div>
+    <div class="col-12">
+        {% if request.user.usertype == 'company' %}
+            {% for resume in resumes %}
+                {% if resume.is_hidden == False %}
+                    <div class="card" style="width: 100%; margin: 5px">
+                        <div class="card-body">
+                            <a href="{% url 'resume' user.pk resume.pk %}" style="text-decoration: none">
+                                <h5 class="card-title">{{ resume.position }}</h5>
+                            </a>
+                            <p class="card-text">{{ resume.name|capfirst }} {{ resume.last_name|capfirst }}</p>
+                            <p class="card-text">{{ resume.get_category_display }}</p>
+                            <p class="card-text">{{ resume.experience.all.last }}</p>
+                            <p class="card-text" style="font-size: 12px; color: gray;">{{ resume.updated_at }}</p>
                         </div>
-                    {% endif %}
-                {% endfor %}
-                {% if is_paginated %}
-                    {% include 'partial/pagination.html' %}
+                    </div>
                 {% endif %}
-            {% else %}
-                {% for vacancy in vacancies %}
-                    {% if vacancy.is_hidden == False %}
-                        <div class="card" style="width: 100%; margin: 5px">
-                            <div class="card-body">
-                                <a href="{% url 'vacancy' user.pk vacancy.pk %}" style="text-decoration: none">
-                                    <h5 class="card-title">{{ vacancy.position }}</h5>
-                                </a>
-                                <a href="{% url 'profile' vacancy.author.pk %}" style="text-decoration: none">
-                                    <p class="card-text">{{ vacancy.author|capfirst }}</p>
-                                </a>
-                                <p class="card-text">{{ vacancy.salary }} тг.</p>
-                                <p class="card-text">{{ vacancy.description }}</p>
-                                <p class="card-text" style="font-size: 12px; color: gray;">
-                                    Обновлено: {{ vacancy.updated_at }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                {% if is_paginated %}
-                    {% include 'partial/pagination.html' %}
-                {% endif %}
+            {% endfor %}
+        {% if resumes|length == 0 %}
+            <h5 class="card-title" style="margin-bottom: 550px; text-align: center; width: 100%;">
+                Нет резюме для отображения
+            </h5>
+        {% endif %}
+            {% if is_paginated %}
+                {% include 'partial/pagination.html' %}
             {% endif %}
-        </div>
+        {% else %}
+            {% for vacancy in vacancies %}
+                {% if vacancy.is_hidden == False %}
+                <div class="card" style="width: 100%; margin: 5px">
+                    <div class="card-body">
+                        <a href="{% url 'vacancy' user.pk vacancy.pk %}" style="text-decoration: none">
+                            <h5 class="card-title">{{ vacancy.position }}</h5>
+                        </a>
+                        <a href="{% url 'profile' vacancy.author.pk %}" style="text-decoration: none">
+                            <p class="card-text">{{ vacancy.author|capfirst }}</p>
+                        </a>
+                        <p class="card-text">{{ vacancy.salary }} тг.</p>
+                        <p class="card-text">{{ vacancy.description }}</p>
+                        <p class="card-text" style="font-size: 12px; color: gray;">Обновлено: {{ vacancy.updated_at }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+                {% if vacancies|length == 0 %}
+                    <h5 class="card-title" style="margin-bottom: 550px; text-align: center; width: 100%;">
+                        Нет вакансии для отображения
+                    </h5>
+                {% endif %}
+            {% if is_paginated %}
+                {% include 'partial/pagination.html' %}
+            {% endif %}
+        {% endif %}
+    </div>
     {% else %}
         <h5 class="card-title" style="margin-bottom: 550px; text-align: center; width: 100%;">
             Зарегистрируйтесь или зайдите в свой профиль
