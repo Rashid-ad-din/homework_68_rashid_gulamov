@@ -115,14 +115,3 @@ class DeleteVacancyView(PermissionRequiredMixin, DeleteView):
     def has_permission(self):
         return super().has_permission() and self.get_object().author == self.request.user \
                or self.request.user.is_superuser
-
-# class SearchView(ListView):
-#     model = Vacancy
-#     template_name = 'vacancy/search_results.html'
-#
-#     def get_queryset(self):
-#         query = self.request.GET.get('search')
-#         object_list = Vacancy.objects.filter(
-#             Q(position__istartswith=query)
-#         ).order_by('-updated_at')
-#         return object_list
